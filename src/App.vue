@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-<article class="tile is-child notification is-primary">
+<article class="media notification ">
  <figure class="image is-96x96">
   <img src="./assets/logo_hos.png">
 </figure>
@@ -14,11 +14,11 @@
         <div class="level-item">
            <div class="navbar-start">
       <a class="navbar-item">
-          <router-link to="/">หน้าแรก</router-link> 
+          <router-link to="/">  <p class="subtitle">หน้าแรก</p></router-link> 
       </a>
 
       <a class="navbar-item">
-        <router-link to="/add">แบบฟอร์มเฝ้าระวัง</router-link>
+        <router-link to="/add"><p class="subtitle">แบบฟอร์มเฝ้าระวัง</p></router-link>
       </a>
           </div>
         </div>
