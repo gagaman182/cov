@@ -52,12 +52,21 @@ Vue.component("vue-fontawesome", FontAwesomeIcon);
 
 // Material Design Icon
 import MenuIcon from "vue-material-design-icons/Menu.vue";
+// import วันที่
+import moment from "moment";
 
 //ui framework
 Vue.use(Buefy, {
   defaultIconComponent: "vue-fontawesome",
-  defaultIconPack: "fas"
+  defaultIconPack: "fas",
+  defaultDateFormatter: date => {
+    return moment(date).format("DD/MM/YYYY");
+  },
+  defaultDateParser: date => {
+    return moment(date, "DD/MM/YYYY").toDate();
+  }
 });
+
 // address
 Vue.use(VueThailandAddress);
 //fontawesome

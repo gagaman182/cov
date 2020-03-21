@@ -8,7 +8,9 @@
         <div class="field">
           <p class="title">แบบเฝ้าระวังติดตามผู้สัมผัสโรค COVID-19 (14 วัน)</p>
         </div>
-        <p class="subtitle">กลุ่มงานส่งเสริมป้องกันโรค โรงพยาบาลหาดใหญ่</p>
+        <p class="subtitle">
+          งานส่งเสริมป้องกันโรค กลุ่มงานเวชกรรมสังคม โรงพยาบาลหาดใหญ่
+        </p>
         <nav class="level">
           <div class="level-left">
             <div class="level-item">
@@ -57,14 +59,10 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          <strong>Bulma</strong> by
-          <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is
-          licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
-          website content is licensed
-          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-            >CC BY NC SA 4.0</a
-          >.
+          <strong>แบบเฝ้าระวังติดตามผู้สัมผัสโรค COVID-19 โดย</strong
+          ><strong> @ งานส่งเสริมป้องกันโรค </strong> กลุ่มงานเวขกรรมสังคม
+
+          <a href="https://www.hatyaihospital.go.th/">โรงพยาบาลหาดใหญ่</a>.
         </p>
       </div>
     </footer>
