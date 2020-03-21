@@ -16,37 +16,37 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // internal icons
 import {
-  faCheck,
-  faCheckCircle,
-  faInfoCircle,
-  faExclamationTriangle,
-  faExclamationCircle,
-  faArrowUp,
-  faAngleRight,
-  faAngleLeft,
-  faAngleDown,
-  faEye,
-  faEyeSlash,
-  faCaretDown,
-  faCaretUp,
-  faUpload
+    faCheck,
+    faCheckCircle,
+    faInfoCircle,
+    faExclamationTriangle,
+    faExclamationCircle,
+    faArrowUp,
+    faAngleRight,
+    faAngleLeft,
+    faAngleDown,
+    faEye,
+    faEyeSlash,
+    faCaretDown,
+    faCaretUp,
+    faUpload
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
-  faCheck,
-  faCheckCircle,
-  faInfoCircle,
-  faExclamationTriangle,
-  faExclamationCircle,
-  faArrowUp,
-  faAngleRight,
-  faAngleLeft,
-  faAngleDown,
-  faEye,
-  faEyeSlash,
-  faCaretDown,
-  faCaretUp,
-  faUpload
+    faCheck,
+    faCheckCircle,
+    faInfoCircle,
+    faExclamationTriangle,
+    faExclamationCircle,
+    faArrowUp,
+    faAngleRight,
+    faAngleLeft,
+    faAngleDown,
+    faEye,
+    faEyeSlash,
+    faCaretDown,
+    faCaretUp,
+    faUpload
 );
 Vue.component("vue-fontawesome", FontAwesomeIcon);
 
@@ -55,16 +55,20 @@ import MenuIcon from "vue-material-design-icons/Menu.vue";
 // import วันที่
 import moment from "moment";
 
+//axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 //ui framework
 Vue.use(Buefy, {
-  defaultIconComponent: "vue-fontawesome",
-  defaultIconPack: "fas",
-  defaultDateFormatter: date => {
-    return moment(date).format("DD/MM/YYYY");
-  },
-  defaultDateParser: date => {
-    return moment(date, "DD/MM/YYYY").toDate();
-  }
+    defaultIconComponent: "vue-fontawesome",
+    defaultIconPack: "fas",
+    defaultDateFormatter: date => {
+        return moment(date).format("DD/MM/YYYY");
+    },
+    defaultDateParser: date => {
+        return moment(date, "DD/MM/YYYY").toDate();
+    }
 });
 
 // address
@@ -76,10 +80,13 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 // Material Design Icon
 Vue.component("menu-icon", MenuIcon);
 
+// axios
+Vue.use(VueAxios, axios)
+
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount("#app");

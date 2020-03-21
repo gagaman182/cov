@@ -44,7 +44,7 @@
                             expanded
                             v-model="name"
                             size="is-medium"
-                          ></b-input>
+                          ></b-input>{{name}} - {{message}} <pre>{{coins}}</pre>
                         </b-field>
                       </b-field>
                     </b-field>
@@ -1609,7 +1609,14 @@
                 </b-tab-item>
                 <b-tab-item label="วันที่ 8 - 14"></b-tab-item>
               </b-tabs>
+                <div class="columns">
+              <div class="column">
+                <b-button type="is-primary" @click="adddata">บันทึก</b-button>
+
+              </div>
+              </div>
             </div>
+           
           </article>
         </div>
       </div>
@@ -1619,12 +1626,13 @@
 <script>
 //  import moment from 'moment'
 // @ is an alias to /src
+// import {mapState} from 'vuex'
 export default {
   name: "Add",
   data() {
     return {
       prename: null,
-      name: "",
+      // name: "",
       age: "",
       occupation: "",
       idcard: "",
@@ -1816,8 +1824,34 @@ export default {
     },
     selectend() {
       this.day14 = this.endday;
+    },
+    adddata(){
+      this.$store.dispatch('adddata')
     }
-  }
+  },
+    // computed:mapState([
+    //   'name'
+    // ])
+    computed: {
+  name: {
+    get () {
+      return this.$store.state.name
+    },
+    set (value) {
+      this.$store.commit('updateMessage', value)
+    }
+  },
+    coins: {
+    get () {
+      return this.$store.state.coins
+    }
+    
+  },
+   
+},
+ mounted () {
+    this.$store.dispatch('loadCoins')
+  },
 };
 </script>
 <style>
