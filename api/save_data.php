@@ -3,14 +3,14 @@ header('Access-Control-Allow-Origin: *');
 include 'conn.php';
 
 
- $dd = $_POST["dd"];
+ $name = $_GET["name"];
 // $name = "dddd";
 
 	
 
 
 
-        $strvisit  = "  INSERT INTO covid(name) VALUES('".$dd."')";
+        $strvisit  = "  INSERT INTO covid(name) VALUES('".$name."')";
         if ($conn->query($strvisit) === TRUE) {
             // echo "ระบบทำงานเสร็จสมบูรณ์";
             
