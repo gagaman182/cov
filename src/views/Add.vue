@@ -1498,7 +1498,7 @@
                             <!-- <b-input placeholder="ระบุ" v-model="other_detail" rounded></b-input> -->
                             <b-input
                               placeholder="ระบุ"
-                              maxlength="200"
+                             
                               type="textarea"
                               v-model="other_detail"
                             ></b-input>
@@ -2955,7 +2955,7 @@
                             <!-- <b-input placeholder="ระบุ" v-model="other_detail" rounded></b-input> -->
                             <b-input
                               placeholder="ระบุ"
-                              maxlength="200"
+                             
                               type="textarea"
                               v-model="other_detail"
                             ></b-input>
