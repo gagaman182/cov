@@ -4,15 +4,21 @@
 	 include 'conn.php';
 
 
- $sql = "select * from p_pump";
+ $sql = "select 
+ count(id) as total,
+ count(CASE when prename in ('นาย') then id end ) as man,
+ count(CASE when prename not  in ('นาย') then id end ) as women
+  from cov_person"
+  ;
 
 
 $return_arr = array();
 
 if ($result = mysqli_query( $conn, $sql )){
     while ($row = mysqli_fetch_assoc($result)) {
-	$row_array['id'] = $row['id'];
-	$row_array['name'] = $row['name'];
+	$row_array['total'] = $row['total'];
+	$row_array['man'] = $row['man'];
+	$row_array['women'] = $row['women'];
 	
 	
 	
