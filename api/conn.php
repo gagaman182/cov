@@ -9,7 +9,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "pump";
+$dbname = "cov";
 
 
 // Create connection

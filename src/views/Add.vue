@@ -194,6 +194,7 @@
                         <textarea
                           class="textarea is-primary"
                           placeholder="ข้อมูลการเดินทาง"
+                          v-model="travel"
                         ></textarea>
                       </div>
                     </div>
@@ -1498,7 +1499,6 @@
                             <!-- <b-input placeholder="ระบุ" v-model="other_detail" rounded></b-input> -->
                             <b-input
                               placeholder="ระบุ"
-                             
                               type="textarea"
                               v-model="other_detail"
                             ></b-input>
@@ -2955,7 +2955,6 @@
                             <!-- <b-input placeholder="ระบุ" v-model="other_detail" rounded></b-input> -->
                             <b-input
                               placeholder="ระบุ"
-                             
                               type="textarea"
                               v-model="other_detail"
                             ></b-input>
@@ -3179,12 +3178,12 @@
 </template>
 <script>
 import axios from "axios";
-
+import moment from "moment";
 export default {
   name: "Add",
   data() {
     return {
-      //  api_path: "http://192.168.5.187/0161/pump/pump/api/",
+      //  api_path: "http://192.168.5.187/0161/covid/cov/api/",
       api_path: "http://localhost/covid/cov/api/",
       message_res: "",
       prename: null,
@@ -3200,6 +3199,7 @@ export default {
       subdistrict: "",
       district: "",
       province: "",
+      travel: "",
       startday: "",
       endday: "",
       dates: [],
@@ -3410,24 +3410,43 @@ export default {
       this.day14 = this.endday;
     },
     adddata() {
-      if (
-        this.prename != "" ||
-        this.name != "" ||
-        this.age != "" ||
-        this.idcard != ""
-      ) {
-        this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
-      } else {
-        axios
-          .get(this.api_path + "save_data.php", {
-            params: {
-              name: this.name
-            }
-          })
-          .then(response => {
-            this.message_res = response.data;
-          });
-      }
+      // if (
+      //   this.prename == "" ||
+      //   this.name == "" ||
+      //   this.age == "" ||
+      //   this.idcard == ""
+      // ) {
+      //   this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
+      // } else {
+
+      axios
+
+        .get(this.api_path + "save_data.php", {
+          params: {
+            prename: this.prename,
+            name: this.name,
+            age: this.age,
+            occupation: this.occupation,
+            idcard: this.idcard,
+            address: this.address,
+            village: this.village,
+            villname: this.villname,
+            soi: this.soi,
+            road: this.road,
+            subdistrict: this.subdistrict,
+            district: this.district,
+            province: this.province,
+            travel: this.travel,
+            startday: moment(this.startday, "YYYY/MM/DD ").format(
+              "YYYY/MM/DD "
+            ),
+            endday: moment(this.endday, "YYYY/MM/DD ").format("YYYY/MM/DD ")
+          }
+        })
+        .then(response => {
+          this.message_res = response.data;
+        });
+      // }
     }
   },
 

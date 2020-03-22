@@ -26,6 +26,10 @@
         </div>
       </div>
     </nav>
+
+    <b-field label="ถนน">
+      <b-input placeholder="ถนน" size="is-medium" v-model="road"> </b-input>
+    </b-field>
   </div>
 </template>
 
@@ -33,6 +37,11 @@
 // @ is an alias to /src
 
 export default {
-  name: "Home"
+  name: "Home",
+  data() {
+    return {
+      name: null
+    };
+  }
 };
 </script>

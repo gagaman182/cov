@@ -61,10 +61,9 @@
         <p>
           <strong>แบบเฝ้าระวังติดตามผู้สัมผัสโรค COVID-19 โดย</strong
           ><strong> @ งานส่งเสริมป้องกันโรค </strong> กลุ่มงานเวขกรรมสังคม
-          
-          <a href="https://www.hatyaihospital.go.th/">โรงพยาบาลหาดใหญ่</a>.
-          TEL. 074-273100 ต่อ 1925
 
+          <a href="https://www.hatyaihospital.go.th/">โรงพยาบาลหาดใหญ่</a>. TEL.
+          074-273100 ต่อ 1925
         </p>
       </div>
     </footer>
