@@ -66,6 +66,9 @@ import 'vue-good-table/dist/vue-good-table.css'
 
 import DrVueEcharts from 'dr-vue-echarts';
 
+// timeline
+import '../node_modules/timeline-vuejs/dist/timeline-vuejs.css'
+
 
 //ui framework
 Vue.use(Buefy, {
