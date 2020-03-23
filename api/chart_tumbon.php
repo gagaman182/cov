@@ -5,7 +5,7 @@
 
 
  $sql = "SELECT
-
+ 'คลองอู่ตะเภา' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -13,7 +13,7 @@ WHERE
  subdistrict = 'คลองอู่ตะเภา'
 UNION ALL
  SELECT
-
+   'คลองแห' AS NAME,
    count(id) AS total
  FROM
    cov_person
@@ -21,7 +21,7 @@ UNION ALL
    subdistrict = 'คลองแห'
 UNION ALL
 SELECT
-
+ 'ควนลัง' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -29,7 +29,7 @@ WHERE
  subdistrict = 'ควนลัง'
 UNION ALL
 SELECT
-
+ 'คอหงส์' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -38,7 +38,7 @@ WHERE
 UNION ALL
 
 SELECT
-
+ 'คูเต่า' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -46,7 +46,7 @@ WHERE
  subdistrict = 'คูเต่า'
 UNION ALL
 SELECT
-
+ 'ฉลุง' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -54,7 +54,7 @@ WHERE
  subdistrict = 'ฉลุง'
 UNION ALL
 SELECT
-
+ 'ทุ่งตำเสา' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -62,7 +62,7 @@ WHERE
  subdistrict = 'ทุ่งตำเสา'
 UNION ALL
 SELECT
-
+ 'ทุ่งใหญ่' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -70,7 +70,7 @@ WHERE
  subdistrict = 'ทุ่งใหญ่'
 UNION ALL
 SELECT
-
+ 'ท่าข้าม' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -78,7 +78,7 @@ WHERE
  subdistrict = 'ท่าข้าม'
 UNION ALL
 SELECT
-
+ 'น้ำน้อย' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -86,7 +86,7 @@ WHERE
  subdistrict = 'น้ำน้อย'
 UNION ALL
 SELECT
-
+ 'บ้านพรุ' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -94,7 +94,7 @@ WHERE
  subdistrict = 'บ้านพรุ'
 UNION ALL
 SELECT
-
+ 'พะตง' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -102,7 +102,7 @@ WHERE
  subdistrict = 'พะตง'
 UNION ALL
 SELECT
-
+ 'หาดใหญ่' AS NAME,
  count(id) AS total
 FROM
  cov_person
@@ -115,12 +115,13 @@ WHERE
 
 
 $return_arr = array();
-$return_arr2 = array();
+$final = array();
+
 if ($result = mysqli_query( $conn, $sql )){
     while ($row = mysqli_fetch_assoc($result)) {
-	// $row_array['name'] = $row['NAME'];
-  // $row_array['data'] =  array(intval($row['total']));
-    $row_array=  intval($row['total']);
+	 $row_array['label'] = $row['NAME'];
+   $row_array['value'] =  intval($row['total']);
+  
  
 
  
@@ -128,30 +129,20 @@ if ($result = mysqli_query( $conn, $sql )){
     array_push($return_arr,$row_array);
 	
 	
-      // array_push($return_arr, intval($row['total']));  
-
+     
+    // array(intval($row['data']));
 
    }
+  
  }
-//  array_push($return_arr2, $return_arr);  
+  $data_array = array("name" => "จำนวนคน");
+  $data_array2 = array("data" => $return_arr);
+   $result = array_merge($data_array,$data_array2);
+   array_push($final,$result);
 
-// $data['cat'] =  array(intval(1));
-//  echo   json_encode($data);
-//  $row_array['name'] =  $return_arr
-//  array_push($return_arr2,$row_array);
+ mysqli_close($conn);
 
-// echo $return_arr;
-$data = array(
-  array('Year', 'Sales','Expenses'),
-  array(2004, 1000, 400),
-  array(2005, 800, 300),
-  array(2006, 660, 1120)
-);
-
-
-// mysqli_close($conn);
-
-echo json_encode($data);
+echo json_encode($final);
 
 
 

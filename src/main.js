@@ -64,8 +64,7 @@ import VueGoodTablePlugin from 'vue-good-table';
 // import the styles
 import 'vue-good-table/dist/vue-good-table.css'
 
-
-
+import DrVueEcharts from 'dr-vue-echarts';
 
 
 //ui framework
@@ -94,7 +93,7 @@ Vue.use(VueAxios, axios);
 // table
 Vue.use(VueGoodTablePlugin);
 
-
+Vue.use(DrVueEcharts);
 
 Vue.config.productionTip = false;
 

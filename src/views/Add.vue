@@ -201,6 +201,28 @@
                       </div>
                     </div>
                   </div>
+                  <div class="column">
+                     <h5>ประเภทกลุ่มผู้ป่วย</h5>
+                    <div class="block">
+                      
+            <b-radio v-model="pui"
+                name="name"
+                native-value="pui">
+                PUI
+            </b-radio>
+            <b-radio v-model="pui"
+                name="name"
+                native-value="hightrisk">
+                HIGHTRISK
+            </b-radio>
+            <b-radio v-model="pui"
+                name="name"
+                native-value="rowrisk">
+                ROWRISK
+            </b-radio>
+         
+        </div>
+                  </div>
                 </div>
               </article>
             </div>
@@ -353,6 +375,9 @@
                       <tr>
                         <th>ไข้(ระบุ Temp.C)</th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail1" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp1"
@@ -369,6 +394,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail2" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp2"
@@ -385,6 +413,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail3" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp3"
@@ -401,6 +432,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail4" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp4"
@@ -417,6 +451,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail5" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp5"
@@ -433,6 +470,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail6" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp6"
@@ -449,6 +489,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail7" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp7"
@@ -1845,6 +1888,9 @@
                       <tr>
                         <th>ไข้(ระบุ Temp.C)</th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail8" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp8"
@@ -1861,6 +1907,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail9" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp9"
@@ -1877,6 +1926,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail10" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp10"
@@ -1893,6 +1945,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail11" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp11"
@@ -1909,6 +1964,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail12" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp12"
@@ -1925,6 +1983,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail13" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp13"
@@ -1941,6 +2002,9 @@
                           </b-field>
                         </th>
                         <th>
+                           <b-field >
+                          <b-input v-model="temp_detail14" placeholder="°C "></b-input>
+                          </b-field>
                           <b-field>
                             <b-radio-button
                               v-model="temp14"
@@ -3262,8 +3326,8 @@ export default {
   name: "Add",
   data() {
     return {
-      api_path: "http://192.168.5.187/0161/covid/cov/api/",
-      //api_path: "http://localhost/covid/cov/api/",
+      // api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      api_path: "http://localhost/covid/cov/api/",
       message_res: "",
       prename: null,
       name: "",
@@ -3279,6 +3343,7 @@ export default {
       district: "",
       province: "",
       travel: "",
+      pui:"",
       startday: "",
       endday: "",
       dates: [],
@@ -3296,6 +3361,20 @@ export default {
       day12: "",
       day13: "",
       day14: "",
+      temp_detail1: "",
+      temp_detail2: "",
+      temp_detail3: "",
+      temp_detail4: "",
+      temp_detail5: "",
+      temp_detail6: "",
+      temp_detail7: "",
+      temp_detail8: "",
+      temp_detail9: "",
+      temp_detail10: "",
+      temp_detail11: "",
+      temp_detail12: "",
+      temp_detail13: "",
+      temp_detail14: "",
       temp1: "",
       temp2: "",
       temp3: "",
@@ -3519,6 +3598,7 @@ export default {
             district: this.district,
             province: this.province,
             travel: this.travel,
+            pui:this.pui,
             startday: moment(this.startday, "YYYY/MM/DD ").format(
               "YYYY/MM/DD "
             ),
@@ -3537,6 +3617,20 @@ export default {
             day12: moment(this.day12, "YYYY/MM/DD ").format("YYYY/MM/DD "),
             day13: moment(this.day13, "YYYY/MM/DD ").format("YYYY/MM/DD "),
             day14: moment(this.day14, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+            temp_detail1: this.temp_detail1,
+             temp_detail2: this.temp_detail2,
+              temp_detail3: this.temp_detail3,
+               temp_detail4: this.temp_detail4,
+                temp_detail5: this.temp_detail5,
+                 temp_detail6: this.temp_detail6,
+                  temp_detail7: this.temp_detail7,
+                   temp_detail8: this.temp_detail8,
+                    temp_detail9: this.temp_detail9,
+                     temp_detail10: this.temp_detail10,
+                      temp_detail11: this.temp_detail11,
+                       temp_detail12: this.temp_detail12,
+                        temp_detail13: this.temp_detail13,
+                         temp_detail14: this.temp_detail14,
             temp1: this.temp1,
             temp2: this.temp2,
             temp3: this.temp3,

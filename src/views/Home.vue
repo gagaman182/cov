@@ -27,64 +27,56 @@
       </div>
     </nav>
     <div class="tile is-ancestor">
-  <div class="tile is-vertical is-8">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child box">
-        1
-        </article>
-        <article class="tile is-child box">
-        2
-        </article>
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child box" >
+               <p class="subtitle">กราฟแสดงตามประเภทกลุ่มผู้ป่วย</p>
+                 <div class="chart">
+              <pie-chart :data="data_pui"/>
+            </div>
+            </article>
+            
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box" >
+              <p class="subtitle">กราฟแสดงรายตำบลในเขตอำเภอหาดใหญ่</p>
+              <div class="chart">
+                <BarChart :data="data_tumbon" x-name="ตำบล" y-name="" label-rotate   rainbow />
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="subtitle">ข้อมูลผู้สัมผัสโรค</p>
+            <vue-good-table :columns="columnperson" :rows="rowperson" :search-options="{ enabled: true }" ref="persontableref" :pagination-options="{ enabled: true,}" :totalRows="totalRecords" />
+          </article>
+        </div>
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-      
-<div id="chart">
-<apexchart type="bar" height="350" :options="chartOptions" :series="series"></apexchart>
-</div>
-
+          <!-- Put any content you want -->
+          <p class="subtitle">Timeline</p>
+         
         </article>
       </div>
     </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-          <p class="subtitle">ข้อมูลผู้สัมผัสโรค</p>
-      <vue-good-table 
-      :columns="columnperson" 
-      :rows="rowperson" 
-      :search-options="{ enabled: true }"
-  
-      ref="persontableref"
-      :pagination-options="{ enabled: true,}" 
-      :totalRows="totalRecords" 
-       />
-      </article>
-    </div>
-  </div>
-  <div class="tile is-parent">
-    <article class="tile is-child box">
-      <!-- Put any content you want -->
-      <pre>{{rowperson}}</pre>
-    </article>
-  </div>
-</div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-// @ is an alias to /src
-
-export default {
-  name: "Home",
-  data() {
-    return {
-      api_path: "http://192.168.5.187/0161/covid/cov/api/",
-      //api_path: "http://localhost/covid/cov/api/",
-      name: null,
-      count_person:"",
-      columnperson: [{
+  import axios from "axios";
+  // @ is an alias to /src
+  export default {
+    name: "Home",
+    data() {
+      return {
+        // api_path: "http://192.168.5.187/0161/covid/cov/api/",
+        api_path: "http://localhost/covid/cov/api/",
+        // name: null,
+        count_person: "",
+        columnperson: [{
             label: 'ชื่อ-สกุล',
             field: 'name',
           },
@@ -99,46 +91,88 @@ export default {
             label: 'อาชีพ',
             field: 'occupation',
           }
-            
-          
         ],
         // rowperson: [],
         totalRecords: 0,
+        data_tumbon: [{
+          name: "year",
+          data: [{
+              label: "หาดใหญ่",
+              value: 45
+            },
+            {
+              label: "พะตง",
+              value: 60
+            }
+          ]
+        }],
+        data_pui: [
+        {
+          name: '广州',
+          value: 30,
+        },
+        {
+          name: '佛山',
+          value: 15,
+        },
+        {
+          name: '深圳',
+          value: 8,
+        },
+      ],
         
-    };
-  },
-  created() {
-    //แสดงการนับจำนวน
-     this.CountPerson()
-     //แสดงคน
-    this.ShowPerson()
-  },
-  methods: {
+      };
+    },
+    created() {
+      //แสดงการนับจำนวน
+      this.CountPerson()
+      //แสดงคน
+      this.ShowPerson()
+
+      //แสดงกราฟ
+      this.ShowChart_tumbon()
+      this.ShowChart_pui()
+    
+    },
+    methods: {
       CountPerson() {
-         // count person
-      
-      axios.get(this.api_path + "count_person.php")
-        .then(response => {
-        this.count_person = response.data
-
-        })
+        // count person
+        axios.get(this.api_path + "count_person.php")
+          .then(response => {
+            this.count_person = response.data
+          })
       },
-       ShowPerson() {
-         // show person
-      
-      axios.get(this.api_path + "show_person.php")
-        .then(response => {
-        this.rowperson = response.data
-
-        })
+      ShowPerson() {
+        // show person
+        axios.get(this.api_path + "show_person.php")
+          .then(response => {
+            this.rowperson = response.data
+          })
       },
-        
-  },
-};
+        ShowChart_tumbon() {
+        // show person
+        axios.get(this.api_path + "chart_tumbon.php")
+          .then(response => {
+            this.data_tumbon = response.data
+          })
+      },
+      ShowChart_pui() {
+        // show person
+        axios.get(this.api_path + "chart_pui.php")
+          .then(response => {
+            this.data_pui = response.data
+          })
+      }
+
+    },
+  };
 </script>
-<style >
-.reds {
- 
-  color: #FF0000;
-}
+<style>
+  .reds {
+    color: #FF0000;
+  }
+  .chart {
+    width: 100%;
+    height: 300px;
+  }
 </style>
