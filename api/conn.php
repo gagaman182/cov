@@ -1,15 +1,15 @@
 <?php
 
 // hospital
-// $servername = "192.168.4.3";
-// $username = "root";
-// $password = "1234";
-// $dbname = "pump";
-// home
-$servername = "localhost";
+$servername = "192.168.4.3";
 $username = "root";
-$password = "";
+$password = "1234";
 $dbname = "cov";
+// home
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "cov";
 
 
 // Create connection

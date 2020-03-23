@@ -58,6 +58,15 @@ import moment from "moment";
 //axios
 import axios from "axios";
 import VueAxios from "vue-axios";
+//table
+import VueGoodTablePlugin from 'vue-good-table';
+
+// import the styles
+import 'vue-good-table/dist/vue-good-table.css'
+
+
+
+
 
 //ui framework
 Vue.use(Buefy, {
@@ -82,6 +91,10 @@ Vue.component("menu-icon", MenuIcon);
 
 // axios
 Vue.use(VueAxios, axios);
+// table
+Vue.use(VueGoodTablePlugin);
+
+
 
 Vue.config.productionTip = false;
 

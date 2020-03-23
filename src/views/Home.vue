@@ -31,27 +31,41 @@
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child box">
-          <!-- Put any content you want -->
+        1
         </article>
         <article class="tile is-child box">
-          <!-- Put any content you want -->
+        2
         </article>
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <!-- Put any content you want -->
+      
+<div id="chart">
+<apexchart type="bar" height="350" :options="chartOptions" :series="series"></apexchart>
+</div>
+
         </article>
       </div>
     </div>
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <!-- Put any content you want -->
+          <p class="subtitle">ข้อมูลผู้สัมผัสโรค</p>
+      <vue-good-table 
+      :columns="columnperson" 
+      :rows="rowperson" 
+      :search-options="{ enabled: true }"
+  
+      ref="persontableref"
+      :pagination-options="{ enabled: true,}" 
+      :totalRows="totalRecords" 
+       />
       </article>
     </div>
   </div>
   <div class="tile is-parent">
     <article class="tile is-child box">
       <!-- Put any content you want -->
+      <pre>{{rowperson}}</pre>
     </article>
   </div>
 </div>
@@ -66,21 +80,60 @@ export default {
   name: "Home",
   data() {
     return {
-       //  api_path: "http://192.168.5.187/0161/covid/cov/api/",
-      api_path: "http://localhost/covid/cov/api/",
+      api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      //api_path: "http://localhost/covid/cov/api/",
       name: null,
-      count_person:""
+      count_person:"",
+      columnperson: [{
+            label: 'ชื่อ-สกุล',
+            field: 'name',
+          },
+          {
+            label: 'อายุ',
+            field: 'age',
+          },
+          {
+            label: 'เลขบัตรประชาชน',
+            field: 'idcard',
+          }, {
+            label: 'อาชีพ',
+            field: 'occupation',
+          }
+            
+          
+        ],
+        // rowperson: [],
+        totalRecords: 0,
+        
     };
   },
   created() {
-      // count data
+    //แสดงการนับจำนวน
+     this.CountPerson()
+     //แสดงคน
+    this.ShowPerson()
+  },
+  methods: {
+      CountPerson() {
+         // count person
       
       axios.get(this.api_path + "count_person.php")
         .then(response => {
         this.count_person = response.data
 
         })
-  }
+      },
+       ShowPerson() {
+         // show person
+      
+      axios.get(this.api_path + "show_person.php")
+        .then(response => {
+        this.rowperson = response.data
+
+        })
+      },
+        
+  },
 };
 </script>
 <style >
