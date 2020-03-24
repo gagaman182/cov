@@ -58,7 +58,8 @@
             :search-options="{ enabled: true }" ref="persontableref" 
             :pagination-options="{ enabled: true,}" 
             :totalRows="totalRecords"
-            @on-row-click="PersonClick"  />
+           
+            @on-row-dblclick="PersonClick"  />
           </article>
         </div>
       </div>
@@ -181,7 +182,13 @@
           })
       },
        
-         
+       //double click ที่ตาราง
+       PersonClick(params) {
+
+         this.$router.push('/edit/'+params.row.id) 
+
+      },
+
 
 
     },
