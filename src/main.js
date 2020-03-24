@@ -59,16 +59,15 @@ import moment from "moment";
 import axios from "axios";
 import VueAxios from "vue-axios";
 //table
-import VueGoodTablePlugin from 'vue-good-table';
+import VueGoodTablePlugin from "vue-good-table";
 
 // import the styles
-import 'vue-good-table/dist/vue-good-table.css'
+import "vue-good-table/dist/vue-good-table.css";
 
-import DrVueEcharts from 'dr-vue-echarts';
+import DrVueEcharts from "dr-vue-echarts";
 
 // timeline
-import '../node_modules/timeline-vuejs/dist/timeline-vuejs.css'
-
+import "../node_modules/timeline-vuejs/dist/timeline-vuejs.css";
 
 //ui framework
 Vue.use(Buefy, {

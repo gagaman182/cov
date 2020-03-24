@@ -58,7 +58,7 @@
                       <b-input
                         placeholder="ปี"
                         size="is-medium"
-                         type="number"
+                        type="number"
                         required
                         validation-message="ข้อมูลยังไม่ถูกกรอก"
                         v-model="age"
@@ -202,26 +202,22 @@
                     </div>
                   </div>
                   <div class="column">
-                     <h5>ประเภทกลุ่มผู้ป่วย</h5>
+                    <h5>ประเภทกลุ่มผู้ป่วย</h5>
                     <div class="block">
-                      
-            <b-radio v-model="pui"
-                name="name"
-                native-value="pui">
-                PUI
-            </b-radio>
-            <b-radio v-model="pui"
-                name="name"
-                native-value="hightrisk">
-                HIGHTRISK
-            </b-radio>
-            <b-radio v-model="pui"
-                name="name"
-                native-value="rowrisk">
-                ROWRISK
-            </b-radio>
-         
-        </div>
+                      <b-radio v-model="pui" name="name" native-value="pui">
+                        PUI
+                      </b-radio>
+                      <b-radio
+                        v-model="pui"
+                        name="name"
+                        native-value="hightrisk"
+                      >
+                        HIGHTRISK
+                      </b-radio>
+                      <b-radio v-model="pui" name="name" native-value="rowrisk">
+                        ROWRISK
+                      </b-radio>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -270,7 +266,7 @@
                     @input="selectend()"
                   ></b-datepicker>
                 </b-field>
-                 <!-- <b-field label="วันที่สิ้นสุด">
+                <!-- <b-field label="วันที่สิ้นสุด">
             <b-input 
             placeholder="ระบุวันที่" 
             v-model="endday" 
@@ -375,8 +371,11 @@
                       <tr>
                         <th>ไข้(ระบุ Temp.C)</th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail1" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail1"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -394,8 +393,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail2" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail2"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -413,8 +415,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail3" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail3"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -432,8 +437,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail4" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail4"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -451,8 +459,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail5" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail5"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -470,8 +481,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail6" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail6"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -489,8 +503,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail7" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail7"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -1742,7 +1759,7 @@
                           ></b-input>
                         </th>
                         <th>
-                           <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="times2"
@@ -1750,7 +1767,7 @@
                           ></b-input>
                         </th>
                         <th>
-                           <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="times3"
@@ -1766,7 +1783,7 @@
                           ></b-input>
                         </th>
                         <th>
-                           <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="times5"
@@ -1774,7 +1791,7 @@
                           ></b-input>
                         </th>
                         <th>
-                           <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="times6"
@@ -1782,7 +1799,7 @@
                           ></b-input>
                         </th>
                         <th>
-                           <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="times7"
@@ -1888,8 +1905,11 @@
                       <tr>
                         <th>ไข้(ระบุ Temp.C)</th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail8" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail8"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -1907,8 +1927,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail9" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail9"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -1926,8 +1949,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail10" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail10"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -1945,8 +1971,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail11" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail11"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -1964,8 +1993,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail12" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail12"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -1983,8 +2015,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail13" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail13"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -2002,8 +2037,11 @@
                           </b-field>
                         </th>
                         <th>
-                           <b-field >
-                          <b-input v-model="temp_detail14" placeholder="°C "></b-input>
+                          <b-field>
+                            <b-input
+                              v-model="temp_detail14"
+                              placeholder="°C "
+                            ></b-input>
                           </b-field>
                           <b-field>
                             <b-radio-button
@@ -3247,7 +3285,7 @@
                           เวลา
                         </th>
                         <th>
-                           <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="informer8"
@@ -3255,7 +3293,7 @@
                           ></b-input>
                         </th>
                         <th>
-                            <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="informer9"
@@ -3263,7 +3301,7 @@
                           ></b-input>
                         </th>
                         <th>
-                            <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="informer10"
@@ -3271,7 +3309,7 @@
                           ></b-input>
                         </th>
                         <th>
-                            <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="informer11"
@@ -3279,7 +3317,7 @@
                           ></b-input>
                         </th>
                         <th>
-                            <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="informer12"
@@ -3287,7 +3325,7 @@
                           ></b-input>
                         </th>
                         <th>
-                           <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="informer13"
@@ -3295,7 +3333,7 @@
                           ></b-input>
                         </th>
                         <th>
-                            <b-input
+                          <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
                             v-model="informer14"
@@ -3326,7 +3364,7 @@ export default {
   name: "Add",
   data() {
     return {
-       api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      api_path: "http://192.168.5.187/0161/covid/cov/api/",
       //api_path: "http://localhost/covid/cov/api/",
       message_res: "",
       prename: null,
@@ -3342,8 +3380,9 @@ export default {
       subdistrict: "",
       district: "",
       province: "",
+      zipcode: "",
       travel: "",
-      pui:"",
+      pui: "",
       startday: "",
       endday: "",
       dates: [],
@@ -3558,21 +3597,18 @@ export default {
       times12: "",
       times13: "",
       times14: "",
-      user_create:""
+      user_create: ""
     };
   },
   methods: {
     selectstart() {
- 
-      this.day1 = this.startday
+      this.day1 = this.startday;
       // this.endday =  moment(this.startday,'YYYY-MM-DD').add('days', 13).format('YYYY-MM-DD ')
-     
     },
     selectend() {
-      this.day14 = this.endday
+      this.day14 = this.endday;
     },
     adddata() {
-     
       // if (
       //   this.prename == "" ||
       //   this.name == "" ||
@@ -3597,11 +3633,13 @@ export default {
             subdistrict: this.subdistrict,
             district: this.district,
             province: this.province,
+            zipcode: this.zipcode,
             travel: this.travel,
-            pui:this.pui,
+            pui: this.pui,
             startday: moment(this.startday, "YYYY/MM/DD ").format(
               "YYYY/MM/DD "
             ),
+            // startday:this.startday,
             endday: moment(this.endday, "YYYY/MM/DD ").format("YYYY/MM/DD "),
             day1: moment(this.day1, "YYYY/MM/DD ").format("YYYY/MM/DD "),
             day2: moment(this.day2, "YYYY/MM/DD ").format("YYYY/MM/DD "),
@@ -3618,19 +3656,19 @@ export default {
             day13: moment(this.day13, "YYYY/MM/DD ").format("YYYY/MM/DD "),
             day14: moment(this.day14, "YYYY/MM/DD ").format("YYYY/MM/DD "),
             temp_detail1: this.temp_detail1,
-             temp_detail2: this.temp_detail2,
-              temp_detail3: this.temp_detail3,
-               temp_detail4: this.temp_detail4,
-                temp_detail5: this.temp_detail5,
-                 temp_detail6: this.temp_detail6,
-                  temp_detail7: this.temp_detail7,
-                   temp_detail8: this.temp_detail8,
-                    temp_detail9: this.temp_detail9,
-                     temp_detail10: this.temp_detail10,
-                      temp_detail11: this.temp_detail11,
-                       temp_detail12: this.temp_detail12,
-                        temp_detail13: this.temp_detail13,
-                         temp_detail14: this.temp_detail14,
+            temp_detail2: this.temp_detail2,
+            temp_detail3: this.temp_detail3,
+            temp_detail4: this.temp_detail4,
+            temp_detail5: this.temp_detail5,
+            temp_detail6: this.temp_detail6,
+            temp_detail7: this.temp_detail7,
+            temp_detail8: this.temp_detail8,
+            temp_detail9: this.temp_detail9,
+            temp_detail10: this.temp_detail10,
+            temp_detail11: this.temp_detail11,
+            temp_detail12: this.temp_detail12,
+            temp_detail13: this.temp_detail13,
+            temp_detail14: this.temp_detail14,
             temp1: this.temp1,
             temp2: this.temp2,
             temp3: this.temp3,
@@ -3800,18 +3838,17 @@ export default {
             informer12: this.informer12,
             informer13: this.informer13,
             informer14: this.informer14,
-            user_create:this.user_create
-       
+            user_create: this.user_create
           }
         })
         .then(response => {
           this.message_res = response.data;
           this.$buefy.notification.open({
-                    message: this.message_res[0].message,
-                    type: 'is-success'
-                })
+            message: this.message_res[0].message,
+            type: "is-success"
+          });
 
-                this.$router.push('/')
+          this.$router.push("/");
         });
       // }
     }
