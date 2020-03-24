@@ -268,11 +268,11 @@
                   ></b-datepicker>
                 </b-field>
                 <!-- <b-field label="วันที่สิ้นสุด">
-            <b-input 
-            placeholder="ระบุวันที่" 
-            v-model="endday" 
-            disabled></b-input>
-        </b-field> -->
+                <b-input 
+                placeholder="ระบุวันที่" 
+                v-model="endday" 
+                disabled></b-input>
+            </b-field> -->
               </div>
             </div>
             <div class="content ">
@@ -3365,8 +3365,8 @@ export default {
   name: "Add",
   data() {
     return {
-      api_path: "http://192.168.5.187/0161/covid/cov/api/",
-      //api_path: "http://localhost/covid/cov/api/",
+      //api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      api_path: "http://localhost/covid/cov/api/",
       message_res: "",
       prename: null,
       name: "",
@@ -3848,7 +3848,6 @@ export default {
             message: this.message_res[0].message,
             type: "is-success"
           });
-
           this.$router.push("/");
         });
       // }
@@ -3882,10 +3881,221 @@ export default {
         this.zipcode = this.updateperson[0].zipcode;
         this.travel = this.updateperson[0].travel;
         this.pui = this.updateperson[0].pui;
-        this.startday = this.updateperson[0].startday;
-        this.endday = this.updateperson[0].endday;
+        this.startday = new Date(this.updateperson[0].startday);
+        this.endday = new Date(this.updateperson[0].endday);
+        this.day1 = new Date(this.updateperson[0].day1);
+        this.day2 = new Date(this.updateperson[0].day2);
+        this.day3 = new Date(this.updateperson[0].day3);
+        this.day4 = new Date(this.updateperson[0].day4);
+        this.day5 = new Date(this.updateperson[0].day5);
+        this.day6 = new Date(this.updateperson[0].day6);
+        this.day7 = new Date(this.updateperson[0].day7);
+        this.day8 = new Date(this.updateperson[0].day8);
+        this.day9 = new Date(this.updateperson[0].day9);
+        this.day10 = new Date(this.updateperson[0].day10);
+        this.day11 = new Date(this.updateperson[0].day11);
+        this.day12 = new Date(this.updateperson[0].day12);
+        this.day13 = new Date(this.updateperson[0].day13);
+        this.day14 = new Date(this.updateperson[0].day14);
+        this.temp_detail1 = this.updateperson[0].temp_detail1;
+        this.temp_detail2 = this.updateperson[0].temp_detail2;
+        this.temp_detail3 = this.updateperson[0].temp_detail3;
+        this.temp_detail4 = this.updateperson[0].temp_detail4;
+        this.temp_detail5 = this.updateperson[0].temp_detail5;
+        this.temp_detail6 = this.updateperson[0].temp_detail6;
+        this.temp_detail7 = this.updateperson[0].temp_detail7;
+        this.temp_detail8 = this.updateperson[0].temp_detail8;
+        this.temp_detail9 = this.updateperson[0].temp_detail9;
+        this.temp_detail10 = this.updateperson[0].temp_detail10;
+        this.temp_detail11 = this.updateperson[0].temp_detail11;
+        this.temp_detail12 = this.updateperson[0].temp_detail12;
+        this.temp_detail13 = this.updateperson[0].temp_detail13;
+        this.temp_detail14 = this.updateperson[0].temp_detail14;
+        this.temp1 = this.updateperson[0].temp1;
+        this.temp2 = this.updateperson[0].temp2;
+        this.temp3 = this.updateperson[0].temp3;
+        this.temp4 = this.updateperson[0].temp4;
+        this.temp5 = this.updateperson[0].temp5;
+        this.temp6 = this.updateperson[0].temp6;
+        this.temp7 = this.updateperson[0].temp7;
+        this.temp8 = this.updateperson[0].temp8;
+        this.temp9 = this.updateperson[0].temp9;
+        this.temp10 = this.updateperson[0].temp10;
+        this.temp11 = this.updateperson[0].temp11;
+        this.temp12 = this.updateperson[0].temp12;
+        this.temp13 = this.updateperson[0].temp13;
+        this.temp14 = this.updateperson[0].temp14;
+        this.steam1 = this.updateperson[0].steam1;
+        this.steam2 = this.updateperson[0].steam2;
+        this.steam3 = this.updateperson[0].steam3;
+        this.steam4 = this.updateperson[0].steam4;
+        this.steam5 = this.updateperson[0].steam5;
+        this.steam6 = this.updateperson[0].steam6;
+        this.steam7 = this.updateperson[0].steam7;
+        this.steam8 = this.updateperson[0].steam8;
+        this.steam9 = this.updateperson[0].steam9;
+        this.steam10 = this.updateperson[0].steam10;
+        this.steam11 = this.updateperson[0].steam11;
+        this.steam12 = this.updateperson[0].steam12;
+        this.steam13 = this.updateperson[0].steam13;
+        this.steam14 = this.updateperson[0].steam14;
+        this.throat1 = this.updateperson[0].throat1;
+        this.throat2 = this.updateperson[0].throat2;
+        this.throat3 = this.updateperson[0].throat3;
+        this.throat4 = this.updateperson[0].throat4;
+        this.throat5 = this.updateperson[0].throat5;
+        this.throat6 = this.updateperson[0].throat6;
+        this.throat7 = this.updateperson[0].throat7;
+        this.throat8 = this.updateperson[0].throat8;
+        this.throat9 = this.updateperson[0].throat9;
+        this.throat10 = this.updateperson[0].throat10;
+        this.throat11 = this.updateperson[0].throat11;
+        this.throat12 = this.updateperson[0].throat12;
+        this.throat13 = this.updateperson[0].throat13;
+        this.throat14 = this.updateperson[0].throat14;
+        this.runny1 = this.updateperson[0].runny1;
+        this.runny2 = this.updateperson[0].runny2;
+        this.runny3 = this.updateperson[0].runny3;
+        this.runny4 = this.updateperson[0].runny4;
+        this.runny5 = this.updateperson[0].runny5;
+        this.runny6 = this.updateperson[0].runny6;
+        this.runny7 = this.updateperson[0].runny7;
+        this.runny8 = this.updateperson[0].runny8;
+        this.runny9 = this.updateperson[0].runny9;
+        this.runny10 = this.updateperson[0].runny10;
+        this.runny11 = this.updateperson[0].runny11;
+        this.runny12 = this.updateperson[0].runny12;
+        this.runny13 = this.updateperson[0].runny13;
+        this.runny14 = this.updateperson[0].runny14;
+        this.phlegm1 = this.updateperson[0].phlegm1;
+        this.phlegm2 = this.updateperson[0].phlegm2;
+        this.phlegm3 = this.updateperson[0].phlegm3;
+        this.phlegm4 = this.updateperson[0].phlegm4;
+        this.phlegm5 = this.updateperson[0].phlegm5;
+        this.phlegm6 = this.updateperson[0].phlegm6;
+        this.phlegm7 = this.updateperson[0].phlegm7;
+        this.phlegm8 = this.updateperson[0].phlegm8;
+        this.phlegm9 = this.updateperson[0].phlegm9;
+        this.phlegm10 = this.updateperson[0].phlegm10;
+        this.phlegm11 = this.updateperson[0].phlegm11;
+        this.phlegm12 = this.updateperson[0].phlegm12;
+        this.phlegm13 = this.updateperson[0].phlegm13;
+        this.phlegm14 = this.updateperson[0].phlegm14;
+        this.breath1 = this.updateperson[0].breath1;
+        this.breath2 = this.updateperson[0].breath2;
+        this.breath3 = this.updateperson[0].breath3;
+        this.breath4 = this.updateperson[0].breath4;
+        this.breath5 = this.updateperson[0].breath5;
+        this.breath6 = this.updateperson[0].breath6;
+        this.breath7 = this.updateperson[0].breath7;
+        this.breath8 = this.updateperson[0].breath8;
+        this.breath9 = this.updateperson[0].breath9;
+        this.breath10 = this.updateperson[0].breath10;
+        this.breath11 = this.updateperson[0].breath11;
+        this.breath12 = this.updateperson[0].breath12;
+        this.breath13 = this.updateperson[0].breath13;
+        this.breath14 = this.updateperson[0].breath14;
+        this.gasp1 = this.updateperson[0].gasp1;
+        this.gasp2 = this.updateperson[0].gasp2;
+        this.gasp3 = this.updateperson[0].gasp3;
+        this.gasp4 = this.updateperson[0].gasp4;
+        this.gasp5 = this.updateperson[0].gasp5;
+        this.gasp6 = this.updateperson[0].gasp6;
+        this.gasp7 = this.updateperson[0].gasp7;
+        this.gasp8 = this.updateperson[0].gasp8;
+        this.gasp9 = this.updateperson[0].gasp9;
+        this.gasp10 = this.updateperson[0].gasp10;
+        this.gasp11 = this.updateperson[0].gasp11;
+        this.gasp12 = this.updateperson[0].gasp12;
+        this.gasp13 = this.updateperson[0].gasp13;
+        this.gasp14 = this.updateperson[0].gasp14;
+        this.muscle1 = this.updateperson[0].muscle1;
+        this.muscle2 = this.updateperson[0].muscle2;
+        this.muscle3 = this.updateperson[0].muscle3;
+        this.muscle4 = this.updateperson[0].muscle4;
+        this.muscle5 = this.updateperson[0].muscle5;
+        this.muscle6 = this.updateperson[0].muscle6;
+        this.muscle7 = this.updateperson[0].muscle7;
+        this.muscle8 = this.updateperson[0].muscle8;
+        this.muscle9 = this.updateperson[0].muscle9;
+        this.muscle10 = this.updateperson[0].muscle10;
+        this.muscle11 = this.updateperson[0].muscle11;
+        this.muscle12 = this.updateperson[0].muscle12;
+        this.muscle13 = this.updateperson[0].muscle13;
+        this.muscle14 = this.updateperson[0].muscle14;
+        this.head1 = this.updateperson[0].head1;
+        this.head2 = this.updateperson[0].head2;
+        this.head3 = this.updateperson[0].head3;
+        this.head4 = this.updateperson[0].head4;
+        this.head5 = this.updateperson[0].head5;
+        this.head6 = this.updateperson[0].head6;
+        this.head7 = this.updateperson[0].head7;
+        this.head8 = this.updateperson[0].head8;
+        this.head9 = this.updateperson[0].head9;
+        this.head10 = this.updateperson[0].head10;
+        this.head11 = this.updateperson[0].head11;
+        this.head12 = this.updateperson[0].head12;
+        this.head13 = this.updateperson[0].head13;
+        this.head14 = this.updateperson[0].head14;
+        this.liquid1 = this.updateperson[0].liquid1;
+        this.liquid2 = this.updateperson[0].liquid2;
+        this.liquid3 = this.updateperson[0].liquid3;
+        this.liquid4 = this.updateperson[0].liquid4;
+        this.liquid5 = this.updateperson[0].liquid5;
+        this.liquid6 = this.updateperson[0].liquid6;
+        this.liquid7 = this.updateperson[0].liquid7;
+        this.liquid8 = this.updateperson[0].liquid8;
+        this.liquid9 = this.updateperson[0].liquid9;
+        this.liquid10 = this.updateperson[0].liquid10;
+        this.liquid11 = this.updateperson[0].liquid11;
+        this.liquid12 = this.updateperson[0].liquid12;
+        this.liquid13 = this.updateperson[0].liquid13;
+        this.liquid14 = this.updateperson[0].liquid14;
+        this.other_detail = this.updateperson[0].other_detail;
+        this.other1 = this.updateperson[0].other1;
+        this.other2 = this.updateperson[0].other2;
+        this.other3 = this.updateperson[0].other3;
+        this.other4 = this.updateperson[0].other4;
+        this.other5 = this.updateperson[0].other5;
+        this.other6 = this.updateperson[0].other6;
+        this.other7 = this.updateperson[0].other7;
+        this.other8 = this.updateperson[0].other8;
+        this.other9 = this.updateperson[0].other9;
+        this.other10 = this.updateperson[0].other10;
+        this.other11 = this.updateperson[0].other11;
+        this.other12 = this.updateperson[0].other12;
+        this.other13 = this.updateperson[0].other13;
+        this.other14 = this.updateperson[0].other14;
+        this.informer1 = this.updateperson[0].informer1;
+        this.informer2 = this.updateperson[0].informer2;
+        this.informer3 = this.updateperson[0].informer3;
+        this.informer4 = this.updateperson[0].informer4;
+        this.informer5 = this.updateperson[0].informer5;
+        this.informer6 = this.updateperson[0].informer6;
+        this.informer7 = this.updateperson[0].informer7;
+        this.informer8 = this.updateperson[0].informer8;
+        this.informer9 = this.updateperson[0].informer9;
+        this.informer10 = this.updateperson[0].informer10;
+        this.informer11 = this.updateperson[0].informer11;
+        this.informer12 = this.updateperson[0].informer12;
+        this.informer13 = this.updateperson[0].informer13;
+        this.informer14 = this.updateperson[0].informer14;
+        this.user_create = this.updateperson[0].user_create;
+        this.times1 = this.updateperson[0].times1;
+        this.times2 = this.updateperson[0].times2;
+        this.times3 = this.updateperson[0].times3;
+        this.times4 = this.updateperson[0].times4;
+        this.times5 = this.updateperson[0].times5;
+        this.times6 = this.updateperson[0].times6;
+        this.times7 = this.updateperson[0].times7;
+        this.times8 = this.updateperson[0].times8;
+        this.times9 = this.updateperson[0].times9;
+        this.times10 = this.updateperson[0].times10;
+        this.times11 = this.updateperson[0].times11;
+        this.times12 = this.updateperson[0].times12;
+        this.times13 = this.updateperson[0].times13;
+        this.times14 = this.updateperson[0].times14;
       });
-       
   }
 };
 </script>
