@@ -26,8 +26,10 @@
         </div>
       </div>
     </nav>
+   
     <div class="tile is-ancestor">
-      <div class="tile is-vertical is-8">
+      <div class="tile is-vertical is-12">
+             
         <div class="tile">
           <div class="tile is-parent is-vertical">
             <article class="tile is-child box" >
@@ -50,44 +52,40 @@
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="subtitle">ข้อมูลผู้สัมผัสโรค</p>
-            <vue-good-table :columns="columnperson" :rows="rowperson" :search-options="{ enabled: true }" ref="persontableref" :pagination-options="{ enabled: true,}" :totalRows="totalRecords" />
+            <vue-good-table 
+            :columns="columnperson" 
+            :rows="rowperson" 
+            :search-options="{ enabled: true }" ref="persontableref" 
+            :pagination-options="{ enabled: true,}" 
+            :totalRows="totalRecords"
+            @on-row-click="PersonClick"  />
           </article>
         </div>
       </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <!-- Put any content you want -->
-          <p class="subtitle">Timeline</p>
-             <Timeline
-              :timeline-items="dataTimeline"
-      :message-when-no-items="messageWhenNoItems"
-      :unique-year="true"
-      :show-day-and-month="true"
-      order="desc"
-    />
-        </article>
-      </div>
+   
     </div>
   </div>
 </template>
 
 <script>
   import axios from "axios";
-  import Timeline from 'timeline-vuejs'
+
 
   // @ is an alias to /src
   export default {
     name: "Home",
-    components: {
-    Timeline
-  },
+   
     data() {
       return {
-        // api_path: "http://192.168.5.187/0161/covid/cov/api/",
-        api_path: "http://localhost/covid/cov/api/",
+         api_path: "http://192.168.5.187/0161/covid/cov/api/",
+        //api_path: "http://localhost/covid/cov/api/",
         // name: null,
         count_person: "",
         columnperson: [{
+            label: 'id',
+            field: 'id',
+          },
+          {
             label: 'ชื่อ-สกุล',
             field: 'name',
           },
@@ -101,6 +99,9 @@
           }, {
             label: 'อาชีพ',
             field: 'occupation',
+          }, {
+            label: 'ประเภทกลุ่มผู้ป่วย',
+            field: 'pui',
           }
         ],
         // rowperson: [],
@@ -132,66 +133,7 @@
         },
       ],
 
-      //timeline
-      messageWhenNoItems: "There arent items",
-    dataTimeline: [
-      {
-        from: new Date(2017, 5, 22),
-        title: "Name",
-        showDayAndMonth: true,
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2017, 8),
-        title: "Name",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2016, 11),
-        title: "Name",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2018, 7, 19),
-        title: "Name",
-        showDayAndMonth: true,
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2016, 1),
-        title: "Name",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2016, 6),
-        title: "Name",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2013, 1),
-        title: "Name",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2015, 1),
-        title: "Name",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      },
-      {
-        from: new Date(2012, 1),
-        title: "Name",
-        description:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum architecto dolor, vitae magnam voluptate accusantium assumenda numquam error mollitia, officia facere consequuntur reprehenderit cum voluptates, ea tempore beatae unde."
-      }
-    ]
+     
         
       };
     },
@@ -204,6 +146,9 @@
       //แสดงกราฟ
       this.ShowChart_tumbon()
       this.ShowChart_pui()
+
+    
+
     
     },
     methods: {
@@ -234,7 +179,10 @@
           .then(response => {
             this.data_pui = response.data
           })
-      }
+      },
+       
+         
+
 
     },
   };
