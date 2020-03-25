@@ -130,31 +130,48 @@ export default {
       ],
       data_pui: [
         {
-          name: "广州",
+          name: "pui",
           value: 30
         },
         {
-          name: "佛山",
+          name: "rowrisk",
           value: 15
         },
         {
-          name: "深圳",
+          name: "hightrisk",
           value: 8
         }
-      ]
+      ],
+      form: {
+        token: ""
+      }
     };
   },
-  created() {
-    //แสดงการนับจำนวน
-    this.CountPerson();
-    //แสดงคน
-    this.ShowPerson();
-
-    //แสดงกราฟ
-    this.ShowChart_tumbon();
-    this.ShowChart_pui();
+  created() {},
+  mounted() {
+    //เริ่มระบบเช็ค  login
+    this.LoadPage();
   },
   methods: {
+    LoadPage() {
+      // session login
+      this.form.token = JSON.parse(localStorage.getItem("token"));
+
+      //  alert(this.form.token[0].token )
+
+      if (this.form.token == undefined) {
+        this.$router.push("/login");
+      } else {
+        //แสดงการนับจำนวน
+        this.CountPerson();
+        //แสดงคน
+        this.ShowPerson();
+
+        //แสดงกราฟ
+        this.ShowChart_tumbon();
+        this.ShowChart_pui();
+      }
+    },
     CountPerson() {
       // count person
       axios.get(this.api_path + "count_person.php").then(response => {

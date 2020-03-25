@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <article class="media notification ">
+    <article class="media notification  " v-if="this.$route.path !== '/login'">
       <figure class="image is-96x96">
         <img src="./assets/logo_hos.png" />
       </figure>
@@ -31,9 +31,13 @@
           </div>
           <div class="level-right">
             <div class="level-item">
-              <label class="checkbox">
-                <input type="checkbox" /> Press enter to submit
-              </label>
+              <span class="tag is-info">
+                <p class="subtitle">ผู้เข้าใช้ระบบ</p>
+              </span>
+              <span class="tag is-primary">
+                <p class="subtitle">{{ this.user }}</p>
+              </span>
+              <b-button type="is-text" @click="signout()">ออกจากระบบ</b-button>
             </div>
           </div>
         </nav>
@@ -56,7 +60,7 @@
       </div>
     </nav>
     <router-view />
-    <footer class="footer">
+    <footer class="footer" v-if="this.$route.path !== '/login'">
       <div class="content has-text-centered">
         <p>
           <strong>แบบเฝ้าระวังติดตามผู้สัมผัสโรค COVID-19 โดย</strong
@@ -69,3 +73,26 @@
     </footer>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      form: {
+        token: ""
+      },
+      user: ""
+    };
+  },
+  methods: {
+    signout: function() {
+      localStorage.removeItem("token");
+      localStorage.clear();
+      this.$router.push("/login");
+    }
+  },
+  mounted() {
+    this.form.token = JSON.parse(localStorage.getItem("token"));
+    this.user = this.form.token[0].fullname;
+  }
+};
+</script>

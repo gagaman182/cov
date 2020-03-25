@@ -3597,10 +3597,29 @@ export default {
       times12: "",
       times13: "",
       times14: "",
-      user_create: ""
+      user_create: "",
+      form: {
+        token: ""
+      }
     };
   },
+
+  created: {},
+  mounted() {
+    //เริ่มโหลด เช็คlogin
+    this.loadpage();
+  },
   methods: {
+    loadpage() {
+      //เริ่มระบบเช็ค  login
+      this.form.token = JSON.parse(localStorage.getItem("token"));
+
+      //  alert(this.form.token[0].token )
+
+      if (this.form.token == undefined) {
+        this.$router.push("/login");
+      }
+    },
     selectstart() {
       this.day1 = this.startday;
       // this.endday =  moment(this.startday,'YYYY-MM-DD').add('days', 13).format('YYYY-MM-DD ')
@@ -3838,7 +3857,7 @@ export default {
             informer12: this.informer12,
             informer13: this.informer13,
             informer14: this.informer14,
-            user_create: this.user_create
+            user_create: this.form.token[0].fullname
           }
         })
         .then(response => {
@@ -3852,9 +3871,7 @@ export default {
         });
       // }
     }
-  },
-  computed: {},
-  mounted() {}
+  }
 };
 </script>
 <style>
