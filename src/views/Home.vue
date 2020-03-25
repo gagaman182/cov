@@ -52,6 +52,16 @@
               </div>
             </article>
           </div>
+           <div class="tile is-parent">
+            <article class="tile is-child box">
+              <p class="subtitle">กราฟเส้นแสดงเปรียบเทียบระหว่าง rowrisk กับ hightrisk</p>
+              <div class="chart">
+                 <line-chart 
+                 :data="data_pui_line" 
+                 area />
+              </div>
+            </article>
+          </div>
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
@@ -142,6 +152,26 @@ export default {
           value: 8
         }
       ],
+       data_pui_line: [
+        {
+          name: "rowrisk",
+          data: [
+            { label: "2016", value: 1040000 },
+            { label: "2017", value: 1200000 },
+            { label: "2018", value: 1800000 },
+            { label: "2019", value: 2000000 }
+          ]
+        },
+        {
+          name: "hightrisk",
+          data: [
+            { label: "2016", value: 1040000 },
+            { label: "2017", value: 1200000 },
+            { label: "2018", value: 600000 },
+            { label: "2019", value: 700000 }
+          ]
+        }
+      ],
       form: {
         token: ""
       }
@@ -170,6 +200,7 @@ export default {
         //แสดงกราฟ
         this.ShowChart_tumbon();
         this.ShowChart_pui();
+         this.ShowChart_pui_line();
       }
     },
     CountPerson() {
@@ -194,6 +225,13 @@ export default {
       // show person
       axios.get(this.api_path + "chart_pui.php").then(response => {
         this.data_pui = response.data;
+      });
+    },
+
+    ShowChart_pui_line() {
+      // show person
+      axios.get(this.api_path + "chart_pui_line.php").then(response => {
+        this.data_pui_line = response.data;
       });
     },
 
