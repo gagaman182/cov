@@ -16,37 +16,37 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // internal icons
 import {
-  faCheck,
-  faCheckCircle,
-  faInfoCircle,
-  faExclamationTriangle,
-  faExclamationCircle,
-  faArrowUp,
-  faAngleRight,
-  faAngleLeft,
-  faAngleDown,
-  faEye,
-  faEyeSlash,
-  faCaretDown,
-  faCaretUp,
-  faUpload
+    faCheck,
+    faCheckCircle,
+    faInfoCircle,
+    faExclamationTriangle,
+    faExclamationCircle,
+    faArrowUp,
+    faAngleRight,
+    faAngleLeft,
+    faAngleDown,
+    faEye,
+    faEyeSlash,
+    faCaretDown,
+    faCaretUp,
+    faUpload
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
-  faCheck,
-  faCheckCircle,
-  faInfoCircle,
-  faExclamationTriangle,
-  faExclamationCircle,
-  faArrowUp,
-  faAngleRight,
-  faAngleLeft,
-  faAngleDown,
-  faEye,
-  faEyeSlash,
-  faCaretDown,
-  faCaretUp,
-  faUpload
+    faCheck,
+    faCheckCircle,
+    faInfoCircle,
+    faExclamationTriangle,
+    faExclamationCircle,
+    faArrowUp,
+    faAngleRight,
+    faAngleLeft,
+    faAngleDown,
+    faEye,
+    faEyeSlash,
+    faCaretDown,
+    faCaretUp,
+    faUpload
 );
 Vue.component("vue-fontawesome", FontAwesomeIcon);
 
@@ -69,16 +69,19 @@ import DrVueEcharts from "dr-vue-echarts";
 // timeline
 import "../node_modules/timeline-vuejs/dist/timeline-vuejs.css";
 
+// progress bar
+import VueScrollProgressBar from '@guillaumebriday/vue-scroll-progress-bar'
+
 //ui framework
 Vue.use(Buefy, {
-  defaultIconComponent: "vue-fontawesome",
-  defaultIconPack: "fas",
-  defaultDateFormatter: date => {
-    return moment(date).format("DD/MM/YYYY");
-  },
-  defaultDateParser: date => {
-    return moment(date, "DD/MM/YYYY").toDate();
-  }
+    defaultIconComponent: "vue-fontawesome",
+    defaultIconPack: "fas",
+    defaultDateFormatter: date => {
+        return moment(date).format("DD/MM/YYYY");
+    },
+    defaultDateParser: date => {
+        return moment(date, "DD/MM/YYYY").toDate();
+    }
 });
 
 // address
@@ -94,13 +97,15 @@ Vue.component("menu-icon", MenuIcon);
 Vue.use(VueAxios, axios);
 // table
 Vue.use(VueGoodTablePlugin);
-
+//chart
 Vue.use(DrVueEcharts);
+//progressbar
+Vue.use(VueScrollProgressBar);
 
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount("#app");

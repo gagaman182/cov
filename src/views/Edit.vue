@@ -1,5 +1,9 @@
 <template>
   <div>
+    <vue-scroll-progress-bar 
+     @complete="handleComplete" 
+     height="1rem"
+     backgroundColor="#FFD700" />
     <div class="columns">
       <div class="column">
         <section class="hero is-primary">
