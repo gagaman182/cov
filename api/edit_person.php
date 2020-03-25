@@ -249,6 +249,7 @@ if ($result = mysqli_query( $conn, $sql )){
   $row_array['times12'] = $row['times12'];
   $row_array['times13'] = $row['times13'];
   $row_array['times14'] = $row['times14'];
+  
     array_push($return_arr,$row_array);
    }
  }
