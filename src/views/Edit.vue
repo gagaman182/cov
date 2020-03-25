@@ -4095,6 +4095,7 @@ export default {
         this.times12 = this.updateperson[0].times12;
         this.times13 = this.updateperson[0].times13;
         this.times14 = this.updateperson[0].times14;
+        
       });
   }
 };
