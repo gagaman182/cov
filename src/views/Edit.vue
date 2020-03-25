@@ -1691,60 +1691,109 @@
                           ผู้รับแจ้ง
                         </th>
                         <th>
-                          <b-input
-                            placeholder="ชื่อ"
-                            rounded
+                          <b-select
                             v-model="informer1"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer2"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer3"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer4"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer5"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer6"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer7"
-                            disabled
-                          ></b-input>
+                            placeholder="ชื่อ"
+                            rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
                         </th>
                       </tr>
                       <tr>
@@ -3225,60 +3274,109 @@
                           ผู้รับแจ้ง
                         </th>
                         <th>
-                          <b-input
-                            placeholder="ชื่อ"
-                            rounded
+                          <b-select
                             v-model="informer8"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer9"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer10"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer11"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer12"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer13"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer14"
-                            disabled
-                          ></b-input>
+                            placeholder="ชื่อ"
+                            rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
                         </th>
                       </tr>
                       <tr>
@@ -3348,7 +3446,7 @@
               </b-tabs>
               <div class="columns">
                 <div class="column">
-                  <b-button type="is-primary" @click="adddata">บันทึก</b-button>
+                  <b-button type="is-primary" @click="adddata">บันทึก-แก้ไข</b-button>
                 </div>
               </div>
             </div>
@@ -3583,6 +3681,16 @@ export default {
       informer12: "",
       informer13: "",
       informer14: "",
+      informerall: [
+        {
+          id: 1,
+          name: "ทดสอบ1"
+        },
+        {
+          id: 2,
+          name: "ทดสอบ2"
+        }
+      ],
       times1: "",
       times2: "",
       times3: "",
@@ -3609,6 +3717,7 @@ export default {
   mounted() {
     //เริ่มระบบเช็ค  login
     this.LoadPage();
+     this.edit();
   },
   methods: {
     LoadPage() {
@@ -3884,8 +3993,9 @@ export default {
       //   this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
       // } else {
       axios
-        .get(this.api_path + "save_data.php", {
+        .get(this.api_path + "update_all.php", {
           params: {
+            id:this.$route.params.id,
             prename: this.prename,
             name: this.name,
             age: this.age,
@@ -4103,7 +4213,7 @@ export default {
             informer12: this.informer12,
             informer13: this.informer13,
             informer14: this.informer14,
-            user_create: this.user_create
+            user_create: this.form.token[0].fullname
           }
         })
         .then(response => {

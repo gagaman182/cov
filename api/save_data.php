@@ -218,7 +218,7 @@ include 'conn.php';
  $informer13 = $_GET["informer13"];
  $informer14 = $_GET["informer14"];
  $user_create = $_GET["user_create"];
-
+ $times1 = $_GET["times1"];
 
 
 
@@ -264,7 +264,7 @@ include 'conn.php';
         '".$other_detail."',
         '".$other1."','".$other2."','".$other3."','".$other4."','".$other5."','".$other6."','".$other7."','".$other8."','".$other9."','".$other10."','".$other11."','".$other12."','".$other13."','".$other14."',
         '".$informer1."','".$informer2."','".$informer3."','".$informer4."','".$informer5."','".$informer6."','".$informer7."','".$informer8."','".$informer9."','".$informer10."','".$informer11."','".$informer12."','".$informer13."','".$informer14."',
-        CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,
+        '".$times1."',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,
         '".$user_create."',CURRENT_TIMESTAMP
         
         )";

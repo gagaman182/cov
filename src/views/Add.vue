@@ -1690,60 +1690,109 @@
                           ผู้รับแจ้ง
                         </th>
                         <th>
-                          <b-input
-                            placeholder="ชื่อ"
-                            rounded
+                          <b-select
                             v-model="informer1"
-                            disabled
-                          ></b-input>
+                            placeholder="ชื่อ11"
+                            rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="ชื่อ"
-                            rounded
+                          <b-select
                             v-model="informer2"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer3"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer4"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer5"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer6"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer7"
-                            disabled
-                          ></b-input>
+                            placeholder="ชื่อ"
+                            rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
                         </th>
                       </tr>
                       <tr>
@@ -1751,60 +1800,27 @@
                           เวลา
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times1"
-                            disabled
-                          ></b-input>
+                         
+                          <b-timepicker v-model="times1" inline></b-timepicker>
+                           
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times2"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times2" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times3"
-                            disabled
-                          ></b-input>
+                            <b-timepicker v-model="times3" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times4"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times4" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times5"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times5" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times6"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times6" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times7"
-                            disabled
-                          ></b-input>
+                          <b-timepicker v-model="times7" inline></b-timepicker>
                         </th>
                       </tr>
                     </table>
@@ -3224,60 +3240,109 @@
                           ผู้รับแจ้ง
                         </th>
                         <th>
-                          <b-input
-                            placeholder="ชื่อ"
-                            rounded
+                          <b-select
                             v-model="informer8"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer9"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer10"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer11"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer12"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer13"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
                             placeholder="ชื่อ"
                             rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
+                        </th>
+                        <th>
+                          <b-select
                             v-model="informer14"
-                            disabled
-                          ></b-input>
+                            placeholder="ชื่อ"
+                            rounded
+                          >
+                            <option
+                              v-for="option in informerall"
+                              :value="option.name"
+                              :key="option.id"
+                            >
+                              {{ option.name }}
+                            </option>
+                          </b-select>
                         </th>
                       </tr>
                       <tr>
@@ -3285,60 +3350,25 @@
                           เวลา
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="informer8"
-                            disabled
-                          ></b-input>
+                        <b-timepicker v-model="times8" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="informer9"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times9" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="informer10"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times10" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="informer11"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times11" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="informer12"
-                            disabled
-                          ></b-input>
+                          <b-timepicker v-model="times12" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="informer13"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times13" inline></b-timepicker>
                         </th>
                         <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="informer14"
-                            disabled
-                          ></b-input>
+                           <b-timepicker v-model="times14" inline></b-timepicker>
                         </th>
                       </tr>
                     </table>
@@ -3348,6 +3378,7 @@
               <div class="columns">
                 <div class="column">
                   <b-button type="is-primary" @click="adddata">บันทึก</b-button>
+                  
                 </div>
               </div>
             </div>
@@ -3583,6 +3614,16 @@ export default {
       informer12: "",
       informer13: "",
       informer14: "",
+      informerall: [
+        {
+          id: 1,
+          name: "ทดสอบ1"
+        },
+        {
+          id: 2,
+          name: "ทดสอบ2"
+        }
+      ],
       times1: "",
       times2: "",
       times3: "",
@@ -3627,6 +3668,7 @@ export default {
     selectend() {
       this.day14 = this.endday;
     },
+        
     adddata() {
       // if (
       //   this.prename == "" ||
@@ -3857,7 +3899,21 @@ export default {
             informer12: this.informer12,
             informer13: this.informer13,
             informer14: this.informer14,
-            user_create: this.form.token[0].fullname
+            user_create: this.form.token[0].fullname,
+            times1:  moment(this.times1, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+             times2:  moment(this.times2, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+              times3:  moment(this.times3, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+               times4:  moment(this.times4, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                times5:  moment(this.times5, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                 times6:  moment(this.times6, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                  times7:  moment(this.times7, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                   times8:  moment(this.times8, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                    times9:  moment(this.times9, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                     times10:  moment(this.times10, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                      times11:  moment(this.times11, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                       times12:  moment(this.times12, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                        times13:  moment(this.times13, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
+                         times14:  moment(this.times14, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss")
           }
         })
         .then(response => {
