@@ -1863,6 +1863,7 @@
                           ></b-input>
                         </th>
                       </tr>
+                      
                     </table>
                   </div>
                 </b-tab-item>
@@ -3393,7 +3394,7 @@
                           <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
-                            v-model="informer8"
+                            v-model="times8"
                             disabled
                           ></b-input>
                         </th>
@@ -3401,7 +3402,7 @@
                           <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
-                            v-model="informer9"
+                            v-model="times9"
                             disabled
                           ></b-input>
                         </th>
@@ -3409,7 +3410,7 @@
                           <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
-                            v-model="informer10"
+                            v-model="times10"
                             disabled
                           ></b-input>
                         </th>
@@ -3417,7 +3418,7 @@
                           <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
-                            v-model="informer11"
+                            v-model="times11"
                             disabled
                           ></b-input>
                         </th>
@@ -3425,7 +3426,7 @@
                           <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
-                            v-model="informer12"
+                            v-model="times12"
                             disabled
                           ></b-input>
                         </th>
@@ -3433,7 +3434,7 @@
                           <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
-                            v-model="informer13"
+                            v-model="times13"
                             disabled
                           ></b-input>
                         </th>
@@ -3441,18 +3442,40 @@
                           <b-input
                             placeholder="เวลาที่บันทึก"
                             rounded
-                            v-model="informer14"
+                            v-model="times14"
                             disabled
                           ></b-input>
                         </th>
                       </tr>
                     </table>
+                    
                   </div>
                 </b-tab-item>
               </b-tabs>
+              
               <div class="columns">
                 <div class="column">
+                  <table>
+                     <tr>
+                        <th>
+                            <div class="field">
+                                <b-checkbox 
+                                v-model="total14"
+                                type="is-success">
+                                    เฝ้าระวังครบ 14 วันแล้ว
+                                </b-checkbox>
+                            </div>
+                        </th>
+                      </tr>
+                    </table>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <div class="buttons">
                   <b-button type="is-primary" @click="adddata">บันทึก-แก้ไข</b-button>
+                  <b-button type="is-danger" @click="confirmdelete">ลบข้อมูล</b-button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -3469,8 +3492,8 @@ export default {
   name: "Add",
   data() {
     return {
-      api_path: "http://192.168.5.187/0161/covid/cov/api/",
-     // api_path: "http://localhost/covid/cov/api/",
+     // api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      api_path: "http://localhost/covid/cov/api/",
       message_res: "",
       prename: null,
       name: "",
@@ -3716,7 +3739,9 @@ export default {
       id: this.$route.params.id,
       form: {
         token: ""
-      }
+      },
+      romove_message:"",
+      total14:""
     };
   },
   computed: {},
@@ -3981,6 +4006,7 @@ export default {
           this.times12 = this.updateperson[0].times12;
           this.times13 = this.updateperson[0].times13;
           this.times14 = this.updateperson[0].times14;
+          this.total14 = this.updateperson[0].total14;
         });
     },
     selectstart() {
@@ -4246,7 +4272,8 @@ export default {
             informer12: this.informer12,
             informer13: this.informer13,
             informer14: this.informer14,
-            user_create: this.form.token[0].fullname
+            user_create: this.form.token[0].fullname,
+            total14:this.total14
           }
         })
         .then(response => {
@@ -4258,6 +4285,36 @@ export default {
           this.$router.push("/");
         });
       // }
+    },
+    //แจ้งเตือนการลบ
+      confirmdelete() {
+                this.$buefy.dialog.confirm({
+                    title: 'แจ้งเตือนลบข้อมูล',
+                    message: 'ท่านแน่ใจว่าจะลบข้อมูล<b>'+ this.name + '</b> ออกจากระบบ',
+                    confirmText: 'ยืนยัน',
+                    type: 'is-danger',
+                    hasIcon: true,
+                    onConfirm: () => this.removeperson()
+                })
+            },
+            //ยืนยันการลบ
+    removeperson(){
+      axios.get(this.api_path + "person_my_delete.php", {
+                            params: {
+                                id: this.id,
+                            }
+                        })
+                        .then(response => {
+
+                            this.romove_message = response.data
+                              this.$buefy.notification.open({
+                                message: this.romove_message[0].message,
+                                type: "is-danger"
+                              });
+                              this.$router.push("/");
+                          
+                        })
+    
     }
   }
 };

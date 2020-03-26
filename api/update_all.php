@@ -233,6 +233,7 @@
  $informer12 = $_GET["informer12"];
  $informer13 = $_GET["informer13"];
  $informer14 = $_GET["informer14"];
+ $total14 = $_GET["total14"];
 
 
 
@@ -276,7 +277,8 @@
  other1 = '".$other1."',other2 = '".$other2."',other3 = '".$other3."',other4 = '".$other4."',other5 = '".$other5."',other6 = '".$other6."',other7 = '".$other7."',
  other8 = '".$other8."',other9 = '".$other9."',other10 = '".$other10."',other11 = '".$other11."',other12 = '".$other12."',other13 = '".$other13."',other14 = '".$other14."',
  informer1 = '".$informer1."', informer2 = '".$informer2."', informer3 = '".$informer3."', informer4 = '".$informer4."', informer5 = '".$informer5."', informer6 = '".$informer6."', informer7 = '".$informer7."',
- informer8 = '".$informer8."', informer9 = '".$informer9."', informer10 = '".$informer10."', informer11 = '".$informer11."', informer12 = '".$informer12."', informer13 = '".$informer13."', informer14 = '".$informer14."'
+ informer8 = '".$informer8."', informer9 = '".$informer9."', informer10 = '".$informer10."', informer11 = '".$informer11."', informer12 = '".$informer12."', informer13 = '".$informer13."', informer14 = '".$informer14."',
+ total14 = '".$total14."'
  WHERE id = '".$id."' ";
 
 

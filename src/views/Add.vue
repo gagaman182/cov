@@ -3400,8 +3400,8 @@ export default {
   name: "Add",
   data() {
     return {
-       api_path: "http://192.168.5.187/0161/covid/cov/api/",
-      //api_path: "http://localhost/covid/cov/api/",
+       // api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      api_path: "http://localhost/covid/cov/api/",
       message_res: "",
       prename: null,
       name: "",
