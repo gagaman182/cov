@@ -23,7 +23,8 @@
         <div class="tile is-parent ">
           <article class="tile is-child notification ">
             <p class="title">ข้อมูลทั่วไป</p>
-            3 -->
+         
+            
             <p class="subtitle">ประวัติ และ ที่อยู่อาศัย</p>
             <div class="content">
               <article class="tile is-child box ">
@@ -316,6 +317,7 @@
                               v-model="day2"
                             ></b-datepicker>
                           </b-field>
+                            
                         </th>
                         <th>
                           <b-field>
@@ -3467,8 +3469,8 @@ export default {
   name: "Add",
   data() {
     return {
-      //api_path: "http://192.168.5.187/0161/covid/cov/api/",
-      api_path: "http://localhost/covid/cov/api/",
+      api_path: "http://192.168.5.187/0161/covid/cov/api/",
+     // api_path: "http://localhost/covid/cov/api/",
       message_res: "",
       prename: null,
       name: "",
@@ -3491,7 +3493,7 @@ export default {
       day1: "",
       day2: "",
       day3: "",
-      day4: "",
+      day4: null,
       day5: "",
       day6: "",
       day7: "",
@@ -3738,6 +3740,7 @@ export default {
     },
     //ดึงข้อมูลจาก database มาใช้
     edit() {
+   
       window.scrollTo(0, 0);
       axios
         .get(this.api_path + "edit_person.php", {
@@ -3981,9 +3984,35 @@ export default {
         });
     },
     selectstart() {
-      this.day1 = this.startday;
-      // this.endday =  moment(this.startday,'YYYY-MM-DD').add('days', 13).format('YYYY-MM-DD ')
+
+// alert(this.addDays(this.startday,1))
+
+
+
+      this.day1 = this.startday
+      this.day2 = this.addDays(this.startday,1)
+      this.day3 = this.addDays(this.startday,2)
+      this.day4 = this.addDays(this.startday,3)
+      this.day5 = this.addDays(this.startday,4)
+      this.day6 = this.addDays(this.startday,5)
+      this.day7 = this.addDays(this.startday,6)
+      this.day8 = this.addDays(this.startday,7)
+      this.day9 = this.addDays(this.startday,8)
+      this.day10 = this.addDays(this.startday,9)
+      this.day11 = this.addDays(this.startday,10)
+      this.day12 = this.addDays(this.startday,11)
+      this.day13 = this.addDays(this.startday,12)
+      this.day14 = this.addDays(this.startday,13)
+      this.endday = this.addDays(this.startday,13)
+
+
     },
+    //เพิ่มวันที่ตามจำนวน วันที่ระบุ รับค่า 2 อย่าง วันที่ + ค่าที่ต้องการเพิ่ม
+  addDays(date, days) {
+  this.totay = new Date(date);
+  this.totay.setDate(this.totay.getDate() + days);
+  return this.totay;
+},
     selectend() {
       this.day14 = this.endday;
     },
