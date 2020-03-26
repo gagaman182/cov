@@ -4,6 +4,10 @@
      @complete="handleComplete" 
      height="1rem"
      backgroundColor="#FFD700" />
+      <b-loading 
+      :is-full-page="isFullPage" 
+      :active.sync="isLoading" 
+      :can-cancel="true"></b-loading>
     <div class="columns">
       <div class="column">
         <section class="hero is-primary">
@@ -1800,34 +1804,7 @@
                           </b-select>
                         </th>
                       </tr>
-                      <tr>
-                        <th>
-                          เวลา
-                        </th>
-                        <th>
-                         
-                          <b-timepicker v-model="times1" inline></b-timepicker>
-                           
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times2" inline></b-timepicker>
-                        </th>
-                        <th>
-                            <b-timepicker v-model="times3" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times4" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times5" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times6" inline></b-timepicker>
-                        </th>
-                        <th>
-                          <b-timepicker v-model="times7" inline></b-timepicker>
-                        </th>
-                      </tr>
+                      
                     </table>
                   </div>
                 </b-tab-item>
@@ -3350,32 +3327,7 @@
                           </b-select>
                         </th>
                       </tr>
-                      <tr>
-                        <th>
-                          เวลา
-                        </th>
-                        <th>
-                        <b-timepicker v-model="times8" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times9" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times10" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times11" inline></b-timepicker>
-                        </th>
-                        <th>
-                          <b-timepicker v-model="times12" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times13" inline></b-timepicker>
-                        </th>
-                        <th>
-                           <b-timepicker v-model="times14" inline></b-timepicker>
-                        </th>
-                      </tr>
+                      
                     </table>
                   </div>
                 </b-tab-item>
@@ -3629,33 +3581,25 @@ export default {
           name: "ทดสอบ2"
         }
       ],
-      times1: "",
-      times2: "",
-      times3: "",
-      times4: "",
-      times5: "",
-      times6: "",
-      times7: "",
-      times8: "",
-      times9: "",
-      times10: "",
-      times11: "",
-      times12: "",
-      times13: "",
-      times14: "",
+    
       user_create: "",
       form: {
         token: ""
       },
-      today :""
+      today :"",
+       isLoading: false,
+       isFullPage: true
     
     };
   },
 
   created: {},
   mounted() {
+    
     //เริ่มโหลด เช็คlogin
     this.loadpage();
+   
+    
   },
   methods: {
     loadpage() {
@@ -3666,8 +3610,16 @@ export default {
 
       if (this.form.token == undefined) {
         this.$router.push("/login");
+      }else {
+          this.openLoading();
       }
     },
+     openLoading() {
+                this.isLoading = true
+                setTimeout(() => {
+                    this.isLoading = false
+                }, 1 * 1000)
+            },
     selectstart() {
 
 // alert(this.addDays(this.startday,1))
@@ -3703,14 +3655,9 @@ export default {
     },
         
     adddata() {
-      // if (
-      //   this.prename == "" ||
-      //   this.name == "" ||
-      //   this.age == "" ||
-      //   this.idcard == ""
-      // ) {
-      //   this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
-      // } else {
+      if (!this.prename || !this.name  || !this.age || !this.idcard) {
+        this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
+      } else {
       axios
         .get(this.api_path + "save_data.php", {
           params: {
@@ -3932,21 +3879,8 @@ export default {
             informer12: this.informer12,
             informer13: this.informer13,
             informer14: this.informer14,
-            user_create: this.form.token[0].fullname,
-            times1:  moment(this.times1, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-             times2:  moment(this.times2, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-              times3:  moment(this.times3, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-               times4:  moment(this.times4, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                times5:  moment(this.times5, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                 times6:  moment(this.times6, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                  times7:  moment(this.times7, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                   times8:  moment(this.times8, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                    times9:  moment(this.times9, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                     times10:  moment(this.times10, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                      times11:  moment(this.times11, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                       times12:  moment(this.times12, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                        times13:  moment(this.times13, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss"),
-                         times14:  moment(this.times14, "YYYY/MM/DD HH:mm:ss ").format("YYYY/MM/DD HH:mm:ss")
+            user_create: this.form.token[0].fullname
+          
           }
         })
         .then(response => {
@@ -3958,7 +3892,7 @@ export default {
 
           this.$router.push("/");
         });
-      // }
+      }
     }
   }
 };

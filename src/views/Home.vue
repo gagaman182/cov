@@ -75,6 +75,7 @@
               :totalRows="totalRecords"
               @on-row-dblclick="PersonClick"
             />
+             <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="true"></b-loading>
           </article>
         </div>
       </div>
@@ -174,7 +175,9 @@ export default {
       ],
       form: {
         token: ""
-      }
+      },
+       isLoading: false,
+       isFullPage: true
     };
   },
   created() {},
@@ -192,6 +195,7 @@ export default {
       if (this.form.token == undefined) {
         this.$router.push("/login");
       } else {
+         this.openLoading();
         //แสดงการนับจำนวน
         this.CountPerson();
         //แสดงคน
@@ -203,6 +207,12 @@ export default {
          this.ShowChart_pui_line();
       }
     },
+    openLoading() {
+                this.isLoading = true
+                setTimeout(() => {
+                    this.isLoading = false
+                }, 1 * 1000)
+            },
     CountPerson() {
       // count person
       axios.get(this.api_path + "count_person.php").then(response => {
@@ -237,7 +247,9 @@ export default {
 
     //double click ที่ตาราง
     PersonClick(params) {
-      this.$router.push("/edit/" + params.row.id);
+     
+     
+       this.$router.push("/edit/" + params.row.id);
     }
   }
 };

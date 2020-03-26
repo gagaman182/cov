@@ -15,12 +15,7 @@
    $password = $_GET["password"];
 
 
-
-
-
-
-
- $sql = "select * from users where user =  '".$username."' and pass  =  '".$password."'";
+   $ip_login = getHostByName(getHostName());
 
 
 session_start();
@@ -29,23 +24,15 @@ session_start();
 
 $return_arr = array();
 
-// if ($result = mysqli_query( $conn, $sql )){
-//     while ($row = mysqli_fetch_assoc($result)) {
-// 	$row_array['token'] = session_id();
 
-
-	
-	
-
-
-//     array_push($return_arr,$row_array);
-//    }
-//  }
 $sql = "select * from users where user =  '".$username."' and pass  =  '".$password."'";
 
 $runcheck = mysqli_query($conn,$sql);
 if (mysqli_num_rows($runcheck) > 0)
 {
+	$sql_login = "INSERT INTO cov_login_stamp(user_login,ip_login,date_login)
+	VALUES('".$username."','".$ip_login."',CURRENT_TIMESTAMP)";
+	if ($conn->query($sql_login) === TRUE) {
 	while ($row = mysqli_fetch_assoc($runcheck)) {
     $row_array['token'] = session_id();
 		$row_array['message'] = 'ยืนยันตัวตนถูกต้อง';
@@ -53,6 +40,7 @@ if (mysqli_num_rows($runcheck) > 0)
 		$row_array['fullname'] =  $row['fullname'];
 		array_push($return_arr,$row_array);
 	}
+}
 }else{
 	$row_array['token'] = '';
 	$row_array['message'] = 'ท่านไม่สามรถเข้าสู่ระบบได้';

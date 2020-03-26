@@ -219,6 +219,20 @@ include 'conn.php';
  $informer14 = $_GET["informer14"];
  $user_create = $_GET["user_create"];
  $times1 = $_GET["times1"];
+ $times2 = $_GET["times2"];
+ $times3 = $_GET["times3"];
+ $times4 = $_GET["times4"];
+ $times5 = $_GET["times5"];
+ $times6 = $_GET["times6"];
+ $times7 = $_GET["times7"];
+ $times8 = $_GET["times8"];
+ $times9 = $_GET["times9"];
+ $times10 = $_GET["times10"];
+ $times11 = $_GET["times11"];
+ $times12 = $_GET["times12"];
+ $times13 = $_GET["times13"];
+ $times14 = $_GET["times14"];
+ 
 
 
 
@@ -264,7 +278,7 @@ include 'conn.php';
         '".$other_detail."',
         '".$other1."','".$other2."','".$other3."','".$other4."','".$other5."','".$other6."','".$other7."','".$other8."','".$other9."','".$other10."','".$other11."','".$other12."','".$other13."','".$other14."',
         '".$informer1."','".$informer2."','".$informer3."','".$informer4."','".$informer5."','".$informer6."','".$informer7."','".$informer8."','".$informer9."','".$informer10."','".$informer11."','".$informer12."','".$informer13."','".$informer14."',
-        '".$times1."',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,
+        '".$times1."','".$times2."','".$times3."','".$times4."','".$times5."','".$times6."','".$times7."','".$times8."','".$times9."','".$times10."','".$times11."','".$times12."','".$times13."','".$times14."',
         '".$user_create."',CURRENT_TIMESTAMP
         
         )";

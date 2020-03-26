@@ -233,8 +233,24 @@
  $informer12 = $_GET["informer12"];
  $informer13 = $_GET["informer13"];
  $informer14 = $_GET["informer14"];
+ $times1 = $_GET["times1"];
+ $times2 = $_GET["times2"];
+ $times3 = $_GET["times3"];
+ $times4 = $_GET["times4"];
+ $times5 = $_GET["times5"];
+ $times6 = $_GET["times6"];
+ $times7 = $_GET["times7"];
+ $times8 = $_GET["times8"];
+ $times9 = $_GET["times9"];
+ $times10 = $_GET["times10"];
+ $times11 = $_GET["times11"];
+ $times12 = $_GET["times12"];
+ $times13 = $_GET["times13"];
+ $times14 = $_GET["times14"];
+ $user_update = $_GET["user_update"];
  $total14 = $_GET["total14"];
 
+ $ip_edit = getHostByName(getHostName());
 
 
 
@@ -278,15 +294,23 @@
  other8 = '".$other8."',other9 = '".$other9."',other10 = '".$other10."',other11 = '".$other11."',other12 = '".$other12."',other13 = '".$other13."',other14 = '".$other14."',
  informer1 = '".$informer1."', informer2 = '".$informer2."', informer3 = '".$informer3."', informer4 = '".$informer4."', informer5 = '".$informer5."', informer6 = '".$informer6."', informer7 = '".$informer7."',
  informer8 = '".$informer8."', informer9 = '".$informer9."', informer10 = '".$informer10."', informer11 = '".$informer11."', informer12 = '".$informer12."', informer13 = '".$informer13."', informer14 = '".$informer14."',
- total14 = '".$total14."'
+ times1 = '".$times1."', times2 = '".$times2."', times3 = '".$times3."', times4 = '".$times4."', times5 = '".$times5."', times6 = '".$times6."', times7 = '".$times7."',
+ times8 = '".$times8."', times9 = '".$times9."', times10 = '".$times10."', times11 = '".$times11."', times12 = '".$times12."', times13 = '".$times13."', times14 = '".$times14."',
+ user_update = '".$user_update."',date_update = CURRENT_TIMESTAMP,total14 = '".$total14."'
  WHERE id = '".$id."' ";
 
 
 
 
 if ($conn->query($sql) === TRUE) {
-	$row_array['message'] = "แก้ไขข้อมูลบุคคลสำเร็จ";
-	array_push($return_arr,$row_array);
+	$sql_edit = "INSERT INTO cov_edit_stamp(user_edit,idcard_edit,ip_edit,date_edit) 
+	VALUES('".$user_update."','".$idcard."','".$ip_edit."',CURRENT_TIMESTAMP)";
+	if ($conn->query($sql_edit) === TRUE) {
+		$row_array['message'] = "แก้ไขข้อมูลบุคคลสำเร็จ";
+		array_push($return_arr,$row_array);
+	 }
+        
+
 } else {
 	$row_array['message'] =  "แก้ไขข้อมูลบุคคลไม่สำเร็จ " ;
 	array_push($return_arr,$row_array);

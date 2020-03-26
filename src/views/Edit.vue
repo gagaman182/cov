@@ -4,6 +4,10 @@
      @complete="handleComplete" 
      height="1rem"
      backgroundColor="#FFD700" />
+      <b-loading 
+      :is-full-page="isFullPage" 
+      :active.sync="isLoading" 
+      :can-cancel="true"></b-loading>
     <div class="columns">
       <div class="column">
         <section class="hero is-primary">
@@ -252,6 +256,7 @@
           <article class="tile is-child notification ">
             <p class="title">การติดตามลักษณะอาการ/อาการแสดง</p>
             <p class="subtitle">ตารางติดตาม 14 วัน</p>
+           
             <div class="columns">
               <div class="column">
                 <b-field label="วันที่เริ่มต้น">
@@ -1802,68 +1807,7 @@
                           </b-select>
                         </th>
                       </tr>
-                      <tr>
-                        <th>
-                          เวลา
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times1"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times2"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times3"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times4"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times5"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times6"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times7"
-                            disabled
-                          ></b-input>
-                        </th>
-                      </tr>
-                      
+                     
                     </table>
                   </div>
                 </b-tab-item>
@@ -3386,67 +3330,8 @@
                           </b-select>
                         </th>
                       </tr>
-                      <tr>
-                        <th>
-                          เวลา
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times8"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times9"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times10"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times11"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times12"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times13"
-                            disabled
-                          ></b-input>
-                        </th>
-                        <th>
-                          <b-input
-                            placeholder="เวลาที่บันทึก"
-                            rounded
-                            v-model="times14"
-                            disabled
-                          ></b-input>
-                        </th>
-                      </tr>
+                      
+                      
                     </table>
                     
                   </div>
@@ -3720,20 +3605,7 @@ export default {
           name: "ทดสอบ2"
         }
       ],
-      times1: "",
-      times2: "",
-      times3: "",
-      times4: "",
-      times5: "",
-      times6: "",
-      times7: "",
-      times8: "",
-      times9: "",
-      times10: "",
-      times11: "",
-      times12: "",
-      times13: "",
-      times14: "",
+     
       user_create: "",
       updateperson: "",
       id: this.$route.params.id,
@@ -3741,7 +3613,9 @@ export default {
         token: ""
       },
       romove_message:"",
-      total14:""
+      total14:"",
+       isLoading: false,
+       isFullPage: true
     };
   },
   computed: {},
@@ -3759,13 +3633,14 @@ export default {
       if (this.form.token == undefined) {
         this.$router.push("/login");
       } else {
+         this.openLoading();
         //ดึงข้อมูลจาก database มาใช้ใส่ textbox
         this.edit();
       }
     },
     //ดึงข้อมูลจาก database มาใช้
     edit() {
-   
+      this.openLoading();
       window.scrollTo(0, 0);
       axios
         .get(this.api_path + "edit_person.php", {
@@ -3992,21 +3867,7 @@ export default {
           this.informer13 = this.updateperson[0].informer13;
           this.informer14 = this.updateperson[0].informer14;
           this.user_create = this.updateperson[0].user_create;
-          this.times1 = this.updateperson[0].times1;
-          this.times2 = this.updateperson[0].times2;
-          this.times3 = this.updateperson[0].times3;
-          this.times4 = this.updateperson[0].times4;
-          this.times5 = this.updateperson[0].times5;
-          this.times6 = this.updateperson[0].times6;
-          this.times7 = this.updateperson[0].times7;
-          this.times8 = this.updateperson[0].times8;
-          this.times9 = this.updateperson[0].times9;
-          this.times10 = this.updateperson[0].times10;
-          this.times11 = this.updateperson[0].times11;
-          this.times12 = this.updateperson[0].times12;
-          this.times13 = this.updateperson[0].times13;
-          this.times14 = this.updateperson[0].times14;
-          this.total14 = this.updateperson[0].total14;
+         
         });
     },
     selectstart() {
@@ -4272,7 +4133,7 @@ export default {
             informer12: this.informer12,
             informer13: this.informer13,
             informer14: this.informer14,
-            user_create: this.form.token[0].fullname,
+            user_update: this.form.token[0].fullname,
             total14:this.total14
           }
         })
@@ -4286,6 +4147,12 @@ export default {
         });
       // }
     },
+     openLoading() {
+                this.isLoading = true
+                setTimeout(() => {
+                    this.isLoading = false
+                }, 1 * 1000)
+            },
     //แจ้งเตือนการลบ
       confirmdelete() {
                 this.$buefy.dialog.confirm({
@@ -4299,9 +4166,11 @@ export default {
             },
             //ยืนยันการลบ
     removeperson(){
-      axios.get(this.api_path + "person_my_delete.php", {
+      axios.get(this.api_path + "remove_person.php", {
                             params: {
                                 id: this.id,
+                                user_remove:this.form.token[0].fullname,
+                                idcard_remove:this.idcard
                             }
                         })
                         .then(response => {
