@@ -3368,7 +3368,7 @@
                 </div>
               </div>
             </div>
-            <pre>{{total14}}</pre>
+          
           </article>
         </div>
       </div>
@@ -3382,8 +3382,9 @@ export default {
   name: "Add",
   data() {
     return {
-      api_path: "http://192.168.5.187/0161/covid/cov/api/",
+        //api_path: "http://192.168.5.187/0161/covid/cov/api/",
       //api_path: "http://localhost/covid/cov/api/",
+       api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       message_res: "",
       prename: null,
       name: "",
@@ -3910,14 +3911,7 @@ export default {
       this.day14 = this.endday;
     },
     adddata() {
-      // if (
-      //   this.prename == "" ||
-      //   this.name == "" ||
-      //   this.age == "" ||
-      //   this.idcard == ""
-      // ) {
-      //   this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
-      // } else {
+      
        
       axios
         .get(this.api_path + "update_all.php", {
@@ -4152,7 +4146,7 @@ export default {
           });
           this.$router.push("/");
         });
-      // }
+      
     },
      openLoading() {
                 this.isLoading = true

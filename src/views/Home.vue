@@ -87,7 +87,15 @@
                         <strong>เพิ่มข้อมูล</strong>
                     </a>
                     
+                     <a class="button is-success" 
+                    @click="clickexcel"
+                    
+                    >
+                     
+                        <strong>Excel</strong>
+                    </a>
                 </div>
+               
             </b-navbar-item>
         </template>
     </b-navbar>
@@ -104,7 +112,7 @@
                
                
             />
-     
+     <pre>{{on_excel}}</pre>
              
           </article>
         </div>
@@ -115,15 +123,16 @@
 
 <script>
 import axios from "axios";
-
+import XLSX from 'xlsx' // import xlsx
 // @ is an alias to /src
 export default {
   name: "Home",
 
   data() {
     return {
-     api_path: "http://192.168.5.187/0161/covid/cov/api/",
-      // api_path: "http://localhost/covid/cov/api/",
+       //api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      //api_path: "http://localhost/covid/cov/api/",
+       api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       // name: null,
       count_person: "",
       columnperson: [
@@ -219,7 +228,8 @@ export default {
         token: ""
       },
        isLoading: false,
-       isFullPage: true
+       isFullPage: true,
+         json_excel : []
     };
   },
   created() {},
@@ -255,8 +265,20 @@ export default {
                     this.isLoading = false
                 }, 1 * 1000)
             },
+      //ปุ่มเพิ่ม
      clickadd(){
     this.$router.push("/add");
+     } ,   
+     //สงออก excel
+      clickexcel(){
+      axios.get(this.api_path + "show_person.php").then(response => {
+        this.json_excel = response.data;
+      const dataWS = XLSX.utils.json_to_sheet(this.json_excel)
+      const wb = XLSX.utils.book_new()
+      XLSX.utils.book_append_sheet(wb, dataWS)
+      XLSX.writeFile(wb,'export.xlsx')
+      });
+   
      } ,      
     CountPerson() {
       // count person
