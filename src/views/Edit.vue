@@ -3343,12 +3343,16 @@
                   <table>
                      <tr>
                         <th>
-                            <div class="field">
-                                <b-checkbox 
-                                v-model="total14"
-                                type="is-success">
-                                    เฝ้าระวังครบ 14 วันแล้ว
-                                </b-checkbox>
+                          
+                                <div class="field">
+                                  <b-checkbox 
+                               
+                                  type="is-success"
+                                  v-model="total14">
+                                      เฝ้าระวังครบ 14 วันแล้ว
+                                  </b-checkbox>
+                                  <!-- <input type="checkbox" id="checkbox" v-model="total14"> -->
+                              
                             </div>
                         </th>
                       </tr>
@@ -3364,6 +3368,7 @@
                 </div>
               </div>
             </div>
+            <pre>{{total14}}</pre>
           </article>
         </div>
       </div>
@@ -3867,6 +3872,7 @@ export default {
           this.informer13 = this.updateperson[0].informer13;
           this.informer14 = this.updateperson[0].informer14;
           this.user_create = this.updateperson[0].user_create;
+          this.total14 = this.updateperson[0].total14
          
         });
     },
@@ -3912,6 +3918,7 @@ export default {
       // ) {
       //   this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
       // } else {
+       
       axios
         .get(this.api_path + "update_all.php", {
           params: {

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="true"></b-loading>
     <nav class="level">
       <div class="level-item has-text-centered">
         <div>
@@ -29,6 +30,8 @@
 
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-12">
+        <div class="card">
+           
         <div class="tile">
           <div class="tile is-parent is-vertical">
             <article class="tile is-child box">
@@ -63,9 +66,31 @@
             </article>
           </div>
         </div>
+ </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="subtitle">ข้อมูลผู้สัมผัสโรค</p>
+           
+            <b-navbar>
+       
+     <template slot="brand">
+             <p class="subtitle">ข้อมูลผู้สัมผัสโรค</p> 
+        </template>
+
+        <template slot="end">
+            <b-navbar-item tag="div">
+                <div class="buttons">
+                    <a class="button is-primary" 
+                    @click="clickadd"
+                    
+                    >
+                    <b-icon icon="check"></b-icon>
+                        <strong>เพิ่มข้อมูล</strong>
+                    </a>
+                    
+                </div>
+            </b-navbar-item>
+        </template>
+    </b-navbar>
             <vue-good-table
               :columns="columnperson"
               :rows="rowperson"
@@ -74,8 +99,13 @@
               :pagination-options="{ enabled: true }"
               :totalRows="totalRecords"
               @on-row-dblclick="PersonClick"
+               theme="black-rhino"
+               :line-numbers="true"
+               
+               
             />
-             <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="true"></b-loading>
+     
+             
           </article>
         </div>
       </div>
@@ -120,7 +150,19 @@ export default {
         {
           label: "ประเภทกลุ่มผู้ป่วย",
           field: "pui"
+        },
+         {
+          label: "วันที่เริ่มติดตาม",
+          field: "startday",
+          dateInputFormat: 'DD-MM-YYYY  HH:mm:ss', 
+          dateOutputFormat: 'DD-MM-YYYY HH:mm:ss'
+        },
+         {
+          label: "เฝ้าระวังครบ 14 วัน",
+          field: "total14"
         }
+
+
       ],
       // rowperson: [],
       totalRecords: 0,
@@ -213,6 +255,9 @@ export default {
                     this.isLoading = false
                 }, 1 * 1000)
             },
+     clickadd(){
+    this.$router.push("/add");
+     } ,      
     CountPerson() {
       // count person
       axios.get(this.api_path + "count_person.php").then(response => {

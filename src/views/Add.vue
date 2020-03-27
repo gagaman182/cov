@@ -3603,6 +3603,7 @@ export default {
   },
   methods: {
     loadpage() {
+       window.scrollTo(0, 0);
       //เริ่มระบบเช็ค  login
       this.form.token = JSON.parse(localStorage.getItem("token"));
 
