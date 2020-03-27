@@ -46,8 +46,8 @@ export default {
   name: "maintable",
   data() {
     return {
-     //  api_path: "http://192.168.5.187/0161/covid/cov/api/",
-         api_path: "http://localhost/covid/cov/api/",
+       api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      //   api_path: "http://localhost/covid/cov/api/",
       form: {
         username: "",
         password: "",

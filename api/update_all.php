@@ -250,7 +250,13 @@
  $user_update = $_GET["user_update"];
  $total14 = $_GET["total14"];
 
- $ip_edit = getHostByName(getHostName());
+
+// check version php ถ้าเกิน 5.3 funtion ดู hn ใช้คนล่ะตัว
+ if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+	$ip_edit = getHostByName(getHostName());
+}else{
+	$ip_edit = getHostByName(php_uname('n'));
+}
 
 
 

@@ -6,7 +6,16 @@
 	 $id = $_GET["id"];
 	 $user_remove = $_GET["user_remove"];
 	 $idcard_remove = $_GET["idcard_remove"];
-	 $ip_remove = getHostByName(getHostName());
+
+	 // check version php ถ้าเกิน 5.3 funtion ดู hn ใช้คนล่ะตัว
+ if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+	$ip_remove = getHostByName(getHostName());
+}else{
+	$ip_remove = getHostByName(php_uname('n'));
+}
+
+
+	
 	 
  	 $sql = "DELETE FROM cov_person WHERE id = '".$id."' ";
 

@@ -15,7 +15,14 @@
    $password = $_GET["password"];
 
 
-   $ip_login = getHostByName(getHostName());
+  // check version php ถ้าเกิน 5.3 funtion ดู hn ใช้คนล่ะตัว
+ if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
+	$ip_login = getHostByName(getHostName());
+}else{
+	$ip_login = getHostByName(php_uname('n'));
+}
+
+
 
 
 session_start();
