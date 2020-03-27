@@ -6,9 +6,13 @@
      $id = $_GET["id"];
 	 $prename = $_GET["prename"];
 	 $name = $_GET["name"];
+	 $hn = $_GET["hn"];
 	 $age = $_GET["age"];
 	 $occupation = $_GET["occupation"];
+	 $sex = $_GET["sex"];
 	 $idcard = $_GET["idcard"];
+	 $tel = $_GET["tel"];
+	 $mobile = $_GET["mobile"];
 	 $address = $_GET["address"];
 	 $village = $_GET["village"];
 	 $villname = $_GET["villname"];
@@ -268,7 +272,7 @@
 
 
 
- $sql = "UPDATE cov_person SET prename='".$prename."' ,name = '".$name."' ,age = '".$age."',occupation = '".$occupation."',idcard = '".$idcard."',
+ $sql = "UPDATE cov_person SET prename='".$prename."' ,name = '".$name."' ,hn = '".$hn."' ,age = '".$age."',occupation = '".$occupation."',sex = '".$sex."',idcard = '".$idcard."',tel = '".$tel."',mobile = '".$mobile."',
  address = '".$address."',village = '".$village."',villname = '".$villname."',soi = '".$soi."',road = '".$road."',subdistrict = '".$subdistrict."',
  district = '".$district."',province = '".$province."',zipcode = '".$zipcode."',travel = '".$travel."',pui = '".$pui."' , 
  startday = '".$startday."',endday = '".$endday."',day1 = '".$day1."',day2 = '".$day2."',day3 = '".$day3."',day4 = '".$day4."',day5 = '".$day5."',day6 = '".$day6."',

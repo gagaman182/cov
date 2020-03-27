@@ -11,7 +11,8 @@ FROM
  cov_person
 WHERE
  pui = 'rowrisk'
-GROUP BY date_format(startday,'%d-%m-%Y')"
+GROUP BY date_format(startday,'%d-%m-%Y')
+ORDER BY startday"
   ;
 
 
@@ -40,7 +41,9 @@ if ($result = mysqli_query( $conn, $sql )){
    cov_person
   WHERE
    pui = 'hightrisk'
-  GROUP BY date_format(startday,'%d-%m-%Y')"
+  GROUP BY date_format(startday,'%d-%m-%Y')
+  ORDER BY startday"
+  
     ;
   
   

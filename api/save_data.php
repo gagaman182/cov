@@ -4,9 +4,13 @@ include 'conn.php';
 
  $prename = $_GET["prename"];
  $name = $_GET["name"];
+ $hn = $_GET["hn"];
  $age = $_GET["age"];
  $occupation = $_GET["occupation"];
+ $sex = $_GET["sex"];
  $idcard = $_GET["idcard"];
+ $tel = $_GET["tel"];
+ $mobile = $_GET["mobile"];
  $address = $_GET["address"];
  $village = $_GET["village"];
  $villname = $_GET["villname"];
@@ -242,7 +246,7 @@ include 'conn.php';
 
         
     
-       $strvisit  = "  INSERT INTO cov_person(prename,name,age,occupation,idcard,address,village,villname,soi,road,subdistrict,district,province,zipcode,travel,pui,
+       $strvisit  = "  INSERT INTO cov_person(prename,name,hn,age,occupation,sex,idcard,tel,mobile,address,village,villname,soi,road,subdistrict,district,province,zipcode,travel,pui,
        startday,endday,day1,day2,day3,day4,day5,day6,day7,day8,day9,day10,day11,day12,day13,day14,
        temp_detail1,temp_detail2,temp_detail3,temp_detail4,temp_detail5,temp_detail6,temp_detail7,temp_detail8,temp_detail9,temp_detail10,temp_detail11,temp_detail12,temp_detail13,temp_detail14,
        temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8,temp9,temp10,temp11,temp12,temp13,temp14,
@@ -262,7 +266,7 @@ include 'conn.php';
      user_create,date_create
 
        ) 
-        VALUES('".$prename."','".$name."','".$age."','".$occupation."','".$idcard."','".$address."','".$village."','".$villname."','".$soi."','".$road."','".$subdistrict."','".$district."','".$province."','".$zipcode."','".$travel."','".$pui."',
+        VALUES('".$prename."','".$name."','".$hn."','".$age."','".$occupation."','".$sex."','".$idcard."','".$tel."','".$mobile."','".$address."','".$village."','".$villname."','".$soi."','".$road."','".$subdistrict."','".$district."','".$province."','".$zipcode."','".$travel."','".$pui."',
         '".$startday."','".$endday."','".$day1."','".$day2."','".$day3."','".$day4."','".$day5."','".$day6."','".$day7."','".$day8."','".$day9."','".$day10."','".$day11."','".$day12."','".$day13."','".$day14."',
         '".$temp_detail1."','".$temp_detail2."','".$temp_detail3."','".$temp_detail4."','".$temp_detail5."','".$temp_detail6."','".$temp_detail7."','".$temp_detail8."','".$temp_detail9."','".$temp_detail10."','".$temp_detail11."','".$temp_detail12."','".$temp_detail13."','".$temp_detail14."',
         '".$temp1."','".$temp2."','".$temp3."','".$temp4."','".$temp5."','".$temp6."','".$temp7."','".$temp8."','".$temp9."','".$temp10."','".$temp11."','".$temp12."','".$temp13."','".$temp14."',

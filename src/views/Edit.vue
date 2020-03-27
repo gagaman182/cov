@@ -1,13 +1,15 @@
 <template>
   <div>
-    <vue-scroll-progress-bar 
-     @complete="handleComplete" 
-     height="1rem"
-     backgroundColor="#FFD700" />
-      <b-loading 
-      :is-full-page="isFullPage" 
-      :active.sync="isLoading" 
-      :can-cancel="true"></b-loading>
+    <vue-scroll-progress-bar
+      @complete="handleComplete"
+      height="1rem"
+      backgroundColor="#FFD700"
+    />
+    <b-loading
+      :is-full-page="isFullPage"
+      :active.sync="isLoading"
+      :can-cancel="true"
+    ></b-loading>
     <div class="columns">
       <div class="column">
         <section class="hero is-primary">
@@ -27,8 +29,7 @@
         <div class="tile is-parent ">
           <article class="tile is-child notification ">
             <p class="title">ข้อมูลทั่วไป</p>
-         
-            
+
             <p class="subtitle">ประวัติ และ ที่อยู่อาศัย</p>
             <div class="content">
               <article class="tile is-child box ">
@@ -64,6 +65,18 @@
                     </b-field>
                   </div>
                   <div class="column">
+                    <b-field label="HN">
+                      <b-input
+                        placeholder="HN"
+                        size="is-medium"
+                        required
+                        validation-message="ข้อมูลยังไม่ถูกกรอก"
+                        v-model="hn"
+                      >
+                      </b-input>
+                    </b-field>
+                  </div>
+                  <div class="column">
                     <b-field label="อายุ">
                       <b-input
                         placeholder="ปี"
@@ -72,6 +85,29 @@
                         required
                         validation-message="ข้อมูลยังไม่ถูกกรอก"
                         v-model="age"
+                      >
+                      </b-input>
+                    </b-field>
+                  </div>  
+                      <div class="column">
+                    <b-field label="เบอร์โทร">
+                      <b-input
+                        placeholder="เบอร์โทร"
+                        size="is-medium"
+                        v-model="tel"
+                      >
+                      </b-input>
+                    </b-field>
+                  </div>
+
+                </div>
+                <div class="columns">
+                   <div class="column">
+                    <b-field label="มือถือ">
+                      <b-input
+                        placeholder="มือถือ"
+                        size="is-medium"
+                        v-model="mobile"
                       >
                       </b-input>
                     </b-field>
@@ -84,6 +120,19 @@
                         v-model="occupation"
                       >
                       </b-input>
+                    </b-field>
+                  </div>
+                  <div class="column">
+                    <b-field label="เพศ">
+                      <b-select
+                        placeholder="เพศ"
+                        size="is-medium"
+                        v-model="sex"
+                        expanded
+                      >
+                        <option value="ชาย">ชาย</option>
+                        <option value="หญิง">หญิง</option>
+                      </b-select>
                     </b-field>
                   </div>
                   <div class="column">
@@ -256,7 +305,7 @@
           <article class="tile is-child notification ">
             <p class="title">การติดตามลักษณะอาการ/อาการแสดง</p>
             <p class="subtitle">ตารางติดตาม 14 วัน</p>
-           
+
             <div class="columns">
               <div class="column">
                 <b-field label="วันที่เริ่มต้น">
@@ -322,7 +371,6 @@
                               v-model="day2"
                             ></b-datepicker>
                           </b-field>
-                            
                         </th>
                         <th>
                           <b-field>
@@ -1807,7 +1855,6 @@
                           </b-select>
                         </th>
                       </tr>
-                     
                     </table>
                   </div>
                 </b-tab-item>
@@ -3330,45 +3377,40 @@
                           </b-select>
                         </th>
                       </tr>
-                      
-                      
                     </table>
-                    
                   </div>
                 </b-tab-item>
               </b-tabs>
-              
+
               <div class="columns">
                 <div class="column">
                   <table>
-                     <tr>
-                        <th>
-                          
-                                <div class="field">
-                                  <b-checkbox 
-                               
-                                  type="is-success"
-                                  v-model="total14">
-                                      เฝ้าระวังครบ 14 วันแล้ว
-                                  </b-checkbox>
-                                  <!-- <input type="checkbox" id="checkbox" v-model="total14"> -->
-                              
-                            </div>
-                        </th>
-                      </tr>
-                    </table>
+                    <tr>
+                      <th>
+                        <div class="field">
+                          <b-checkbox type="is-success" v-model="total14">
+                            เฝ้าระวังครบ 14 วันแล้ว
+                          </b-checkbox>
+                          <!-- <input type="checkbox" id="checkbox" v-model="total14"> -->
+                        </div>
+                      </th>
+                    </tr>
+                  </table>
                 </div>
               </div>
               <div class="columns">
                 <div class="column">
                   <div class="buttons">
-                  <b-button type="is-primary" @click="adddata">บันทึก-แก้ไข</b-button>
-                  <b-button type="is-danger" @click="confirmdelete">ลบข้อมูล</b-button>
+                    <b-button type="is-primary" @click="adddata"
+                      >บันทึก-แก้ไข</b-button
+                    >
+                    <b-button type="is-danger" @click="confirmdelete"
+                      >ลบข้อมูล</b-button
+                    >
                   </div>
                 </div>
               </div>
             </div>
-          
           </article>
         </div>
       </div>
@@ -3382,15 +3424,19 @@ export default {
   name: "Add",
   data() {
     return {
-        //api_path: "http://192.168.5.187/0161/covid/cov/api/",
+        api_path: "http://192.168.5.187/0161/covid/cov/api/",
       //api_path: "http://localhost/covid/cov/api/",
-       api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       message_res: "",
       prename: null,
       name: "",
+      hn: "",
       age: "",
       occupation: "",
+      sex: "",
       idcard: "",
+      tel:"",
+      mobile:"",
       address: "",
       village: "",
       villname: "",
@@ -3613,44 +3659,50 @@ export default {
         {
           id: 3,
           name: "ณฐวรรณ์"
-        },{
+        },
+        {
           id: 4,
           name: "มณีกาญจน์"
-        },{
+        },
+        {
           id: 5,
           name: "อุมาวดี"
-        },{
+        },
+        {
           id: 6,
           name: "กมลชนก"
-        },{
+        },
+        {
           id: 7,
           name: "ณัฐวรรณ"
-        },{
+        },
+        {
           id: 8,
           name: "ศศิประภา"
-        },{
+        },
+        {
           id: 9,
           name: "อัยลดา"
         }
       ],
-     
+
       user_create: "",
       updateperson: "",
       id: this.$route.params.id,
       form: {
         token: ""
       },
-      romove_message:"",
-      total14:"",
-       isLoading: false,
-       isFullPage: true
+      romove_message: "",
+      total14: "",
+      isLoading: false,
+      isFullPage: true
     };
   },
   computed: {},
   mounted() {
     //เริ่มระบบเช็ค  login
     this.LoadPage();
-     this.edit();
+    this.edit();
   },
   methods: {
     LoadPage() {
@@ -3661,7 +3713,7 @@ export default {
       if (this.form.token == undefined) {
         this.$router.push("/login");
       } else {
-         this.openLoading();
+        this.openLoading();
         //ดึงข้อมูลจาก database มาใช้ใส่ textbox
         this.edit();
       }
@@ -3681,9 +3733,13 @@ export default {
           this.updateperson = response.data;
           this.prename = this.updateperson[0].prename;
           this.name = this.updateperson[0].name;
+          this.hn = this.updateperson[0].hn;
           this.age = this.updateperson[0].age;
           this.occupation = this.updateperson[0].occupation;
+          this.sex = this.updateperson[0].sex;
           this.idcard = this.updateperson[0].idcard;
+          this.tel = this.updateperson[0].tel;
+          this.mobile = this.updateperson[0].mobile;
           this.address = this.updateperson[0].address;
           this.village = this.updateperson[0].village;
           this.villname = this.updateperson[0].villname;
@@ -3895,55 +3951,51 @@ export default {
           this.informer13 = this.updateperson[0].informer13;
           this.informer14 = this.updateperson[0].informer14;
           this.user_create = this.updateperson[0].user_create;
-          this.total14 = this.updateperson[0].total14
-         
+          this.total14 = this.updateperson[0].total14;
         });
     },
     selectstart() {
+      // alert(this.addDays(this.startday,1))
 
-// alert(this.addDays(this.startday,1))
-
-
-
-      this.day1 = this.startday
-      this.day2 = this.addDays(this.startday,1)
-      this.day3 = this.addDays(this.startday,2)
-      this.day4 = this.addDays(this.startday,3)
-      this.day5 = this.addDays(this.startday,4)
-      this.day6 = this.addDays(this.startday,5)
-      this.day7 = this.addDays(this.startday,6)
-      this.day8 = this.addDays(this.startday,7)
-      this.day9 = this.addDays(this.startday,8)
-      this.day10 = this.addDays(this.startday,9)
-      this.day11 = this.addDays(this.startday,10)
-      this.day12 = this.addDays(this.startday,11)
-      this.day13 = this.addDays(this.startday,12)
-      this.day14 = this.addDays(this.startday,13)
-      this.endday = this.addDays(this.startday,13)
-
-
+      this.day1 = this.startday;
+      this.day2 = this.addDays(this.startday, 1);
+      this.day3 = this.addDays(this.startday, 2);
+      this.day4 = this.addDays(this.startday, 3);
+      this.day5 = this.addDays(this.startday, 4);
+      this.day6 = this.addDays(this.startday, 5);
+      this.day7 = this.addDays(this.startday, 6);
+      this.day8 = this.addDays(this.startday, 7);
+      this.day9 = this.addDays(this.startday, 8);
+      this.day10 = this.addDays(this.startday, 9);
+      this.day11 = this.addDays(this.startday, 10);
+      this.day12 = this.addDays(this.startday, 11);
+      this.day13 = this.addDays(this.startday, 12);
+      this.day14 = this.addDays(this.startday, 13);
+      this.endday = this.addDays(this.startday, 13);
     },
     //เพิ่มวันที่ตามจำนวน วันที่ระบุ รับค่า 2 อย่าง วันที่ + ค่าที่ต้องการเพิ่ม
-  addDays(date, days) {
-  this.totay = new Date(date);
-  this.totay.setDate(this.totay.getDate() + days);
-  return this.totay;
-},
+    addDays(date, days) {
+      this.totay = new Date(date);
+      this.totay.setDate(this.totay.getDate() + days);
+      return this.totay;
+    },
     selectend() {
       this.day14 = this.endday;
     },
     adddata() {
-      
-       
       axios
         .get(this.api_path + "update_all.php", {
           params: {
-            id:this.$route.params.id,
+            id: this.$route.params.id,
             prename: this.prename,
             name: this.name,
+            hn: this.hn,
             age: this.age,
             occupation: this.occupation,
+            sex: this.sex,
             idcard: this.idcard,
+            tel: this.tel,
+            mobile: this.mobile,
             address: this.address,
             village: this.village,
             villname: this.villname,
@@ -4157,7 +4209,7 @@ export default {
             informer13: this.informer13,
             informer14: this.informer14,
             user_update: this.form.token[0].fullname,
-            total14:this.total14
+            total14: this.total14
           }
         })
         .then(response => {
@@ -4168,45 +4220,42 @@ export default {
           });
           this.$router.push("/");
         });
-      
     },
-     openLoading() {
-                this.isLoading = true
-                setTimeout(() => {
-                    this.isLoading = false
-                }, 1 * 1000)
-            },
+    openLoading() {
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1 * 1000);
+    },
     //แจ้งเตือนการลบ
-      confirmdelete() {
-                this.$buefy.dialog.confirm({
-                    title: 'แจ้งเตือนลบข้อมูล',
-                    message: 'ท่านแน่ใจว่าจะลบข้อมูล<b>'+ this.name + '</b> ออกจากระบบ',
-                    confirmText: 'ยืนยัน',
-                    type: 'is-danger',
-                    hasIcon: true,
-                    onConfirm: () => this.removeperson()
-                })
-            },
-            //ยืนยันการลบ
-    removeperson(){
-      axios.get(this.api_path + "remove_person.php", {
-                            params: {
-                                id: this.id,
-                                user_remove:this.form.token[0].fullname,
-                                idcard_remove:this.idcard
-                            }
-                        })
-                        .then(response => {
-
-                            this.romove_message = response.data
-                              this.$buefy.notification.open({
-                                message: this.romove_message[0].message,
-                                type: "is-danger"
-                              });
-                              this.$router.push("/");
-                          
-                        })
-    
+    confirmdelete() {
+      this.$buefy.dialog.confirm({
+        title: "แจ้งเตือนลบข้อมูล",
+        message: "ท่านแน่ใจว่าจะลบข้อมูล<b>" + this.name + "</b> ออกจากระบบ",
+        confirmText: "ยืนยัน",
+        type: "is-danger",
+        hasIcon: true,
+        onConfirm: () => this.removeperson()
+      });
+    },
+    //ยืนยันการลบ
+    removeperson() {
+      axios
+        .get(this.api_path + "remove_person.php", {
+          params: {
+            id: this.id,
+            user_remove: this.form.token[0].fullname,
+            idcard_remove: this.idcard
+          }
+        })
+        .then(response => {
+          this.romove_message = response.data;
+          this.$buefy.notification.open({
+            message: this.romove_message[0].message,
+            type: "is-danger"
+          });
+          this.$router.push("/");
+        });
     }
   }
 };

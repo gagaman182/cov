@@ -1,13 +1,15 @@
 <template>
   <div>
-     <vue-scroll-progress-bar 
-     @complete="handleComplete" 
-     height="1rem"
-     backgroundColor="#FFD700" />
-      <b-loading 
-      :is-full-page="isFullPage" 
-      :active.sync="isLoading" 
-      :can-cancel="true"></b-loading>
+    <vue-scroll-progress-bar
+      @complete="handleComplete"
+      height="1rem"
+      backgroundColor="#FFD700"
+    />
+    <b-loading
+      :is-full-page="isFullPage"
+      :active.sync="isLoading"
+      :can-cancel="true"
+    ></b-loading>
     <div class="columns">
       <div class="column">
         <section class="hero is-primary">
@@ -62,6 +64,18 @@
                     </b-field>
                   </div>
                   <div class="column">
+                    <b-field label="HN">
+                      <b-input
+                        placeholder="HN"
+                        size="is-medium"
+                        required
+                        validation-message="ข้อมูลยังไม่ถูกกรอก"
+                        v-model="hn"
+                      >
+                      </b-input>
+                    </b-field>
+                  </div>
+                  <div class="column">
                     <b-field label="อายุ">
                       <b-input
                         placeholder="ปี"
@@ -74,6 +88,29 @@
                       </b-input>
                     </b-field>
                   </div>
+                   <div class="column">
+                    <b-field label="เบอร์โทร">
+                      <b-input
+                        placeholder="เบอร์โทร"
+                        size="is-medium"
+                        v-model="tel"
+                      >
+                      </b-input>
+                    </b-field>
+                  </div>
+                </div>
+                
+                <div class="columns">
+                   <div class="column">
+                    <b-field label="มือถือ">
+                      <b-input
+                        placeholder="มือถือ"
+                        size="is-medium"
+                        v-model="mobile"
+                      >
+                      </b-input>
+                    </b-field>
+                  </div>
                   <div class="column">
                     <b-field label="อาชีพ">
                       <b-input
@@ -82,6 +119,20 @@
                         v-model="occupation"
                       >
                       </b-input>
+                    </b-field>
+                  </div>
+                  <div class="column">
+                    <b-field label="เพศ">
+                      <b-select
+                        placeholder="เพศ"
+                        size="is-medium"
+                        v-model="sex"
+                        required
+                        expanded
+                      >
+                        <option value="ชาย">ชาย</option>
+                        <option value="หญิง">หญิง</option>
+                      </b-select>
                     </b-field>
                   </div>
                   <div class="column">
@@ -317,7 +368,6 @@
                               placeholder="ระบุวัน"
                               editable
                               v-model="day2"
-                            
                             ></b-datepicker>
                           </b-field>
                         </th>
@@ -1804,7 +1854,6 @@
                           </b-select>
                         </th>
                       </tr>
-                      
                     </table>
                   </div>
                 </b-tab-item>
@@ -3327,7 +3376,6 @@
                           </b-select>
                         </th>
                       </tr>
-                      
                     </table>
                   </div>
                 </b-tab-item>
@@ -3335,7 +3383,6 @@
               <div class="columns">
                 <div class="column">
                   <b-button type="is-primary" @click="adddata">บันทึก</b-button>
-                  
                 </div>
               </div>
             </div>
@@ -3352,15 +3399,19 @@ export default {
   name: "Add",
   data() {
     return {
-       //api_path: "http://192.168.5.187/0161/covid/cov/api/",
+        api_path: "http://192.168.5.187/0161/covid/cov/api/",
       //api_path: "http://localhost/covid/cov/api/",
-       api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       message_res: "",
       prename: null,
       name: "",
+      hn: "",
       age: "",
+      sex: null,
       occupation: "",
       idcard: "",
+      tel:"",
+      mobile:"",
       address: "",
       village: "",
       villname: "",
@@ -3584,50 +3635,51 @@ export default {
         {
           id: 3,
           name: "ณฐวรรณ์"
-        },{
+        },
+        {
           id: 4,
           name: "มณีกาญจน์"
-        },{
+        },
+        {
           id: 5,
           name: "อุมาวดี"
-        },{
+        },
+        {
           id: 6,
           name: "กมลชนก"
-        },{
+        },
+        {
           id: 7,
           name: "ณัฐวรรณ"
-        },{
+        },
+        {
           id: 8,
           name: "ศศิประภา"
-        },{
+        },
+        {
           id: 9,
           name: "อัยลดา"
         }
-
       ],
-    
+
       user_create: "",
       form: {
         token: ""
       },
-      today :"",
-       isLoading: false,
-       isFullPage: true
-    
+      today: "",
+      isLoading: false,
+      isFullPage: true
     };
   },
 
   created: {},
   mounted() {
-    
     //เริ่มโหลด เช็คlogin
     this.loadpage();
-   
-    
   },
   methods: {
     loadpage() {
-       window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
       //เริ่มระบบเช็ค  login
       this.form.token = JSON.parse(localStorage.getItem("token"));
 
@@ -3635,288 +3687,294 @@ export default {
 
       if (this.form.token == undefined) {
         this.$router.push("/login");
-      }else {
-          this.openLoading();
+      } else {
+        this.openLoading();
       }
     },
-     openLoading() {
-                this.isLoading = true
-                setTimeout(() => {
-                    this.isLoading = false
-                }, 1 * 1000)
-            },
+    openLoading() {
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1 * 1000);
+    },
     selectstart() {
+      // alert(this.addDays(this.startday,1))
 
-// alert(this.addDays(this.startday,1))
-
-
-
-      this.day1 = this.startday
-      this.day2 = this.addDays(this.startday,1)
-      this.day3 = this.addDays(this.startday,2)
-      this.day4 = this.addDays(this.startday,3)
-      this.day5 = this.addDays(this.startday,4)
-      this.day6 = this.addDays(this.startday,5)
-      this.day7 = this.addDays(this.startday,6)
-      this.day8 = this.addDays(this.startday,7)
-      this.day9 = this.addDays(this.startday,8)
-      this.day10 = this.addDays(this.startday,9)
-      this.day11 = this.addDays(this.startday,10)
-      this.day12 = this.addDays(this.startday,11)
-      this.day13 = this.addDays(this.startday,12)
-      this.day14 = this.addDays(this.startday,13)
-      this.endday = this.addDays(this.startday,13)
-
-
+      this.day1 = this.startday;
+      this.day2 = this.addDays(this.startday, 1);
+      this.day3 = this.addDays(this.startday, 2);
+      this.day4 = this.addDays(this.startday, 3);
+      this.day5 = this.addDays(this.startday, 4);
+      this.day6 = this.addDays(this.startday, 5);
+      this.day7 = this.addDays(this.startday, 6);
+      this.day8 = this.addDays(this.startday, 7);
+      this.day9 = this.addDays(this.startday, 8);
+      this.day10 = this.addDays(this.startday, 9);
+      this.day11 = this.addDays(this.startday, 10);
+      this.day12 = this.addDays(this.startday, 11);
+      this.day13 = this.addDays(this.startday, 12);
+      this.day14 = this.addDays(this.startday, 13);
+      this.endday = this.addDays(this.startday, 13);
     },
     //เพิ่มวันที่ตามจำนวน วันที่ระบุ รับค่า 2 อย่าง วันที่ + ค่าที่ต้องการเพิ่ม
-  addDays(date, days) {
-  this.totay = new Date(date);
-  this.totay.setDate(this.totay.getDate() + days);
-  return this.totay;
-},
+    addDays(date, days) {
+      this.totay = new Date(date);
+      this.totay.setDate(this.totay.getDate() + days);
+      return this.totay;
+    },
     selectend() {
       this.day14 = this.endday;
     },
-        
+
     adddata() {
-      if (!this.prename || !this.name  || !this.age || !this.idcard) {
+      if (
+        !this.prename ||
+        !this.name ||
+        !this.hn ||
+        !this.age ||
+        !this.sex ||
+        !this.idcard ||
+        !this.startday 
+      ) {
         this.$buefy.dialog.alert("ท่านยังไม่ได้กรอกข้อมูลเบื่องต้น!");
       } else {
-      axios
-        .get(this.api_path + "save_data.php", {
-          params: {
-            prename: this.prename,
-            name: this.name,
-            age: this.age,
-            occupation: this.occupation,
-            idcard: this.idcard,
-            address: this.address,
-            village: this.village,
-            villname: this.villname,
-            soi: this.soi,
-            road: this.road,
-            subdistrict: this.subdistrict,
-            district: this.district,
-            province: this.province,
-            zipcode: this.zipcode,
-            travel: this.travel,
-            pui: this.pui,
-            startday: moment(this.startday, "YYYY/MM/DD ").format(
-              "YYYY/MM/DD "
-            ),
-            // startday:this.startday,
-            endday: moment(this.endday, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day1: moment(this.day1, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day2: moment(this.day2, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day3: moment(this.day3, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day4: moment(this.day4, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day5: moment(this.day5, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day6: moment(this.day6, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day7: moment(this.day7, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day8: moment(this.day8, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day9: moment(this.day9, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day10: moment(this.day10, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day11: moment(this.day11, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day12: moment(this.day12, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day13: moment(this.day13, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day14: moment(this.day14, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            temp_detail1: this.temp_detail1,
-            temp_detail2: this.temp_detail2,
-            temp_detail3: this.temp_detail3,
-            temp_detail4: this.temp_detail4,
-            temp_detail5: this.temp_detail5,
-            temp_detail6: this.temp_detail6,
-            temp_detail7: this.temp_detail7,
-            temp_detail8: this.temp_detail8,
-            temp_detail9: this.temp_detail9,
-            temp_detail10: this.temp_detail10,
-            temp_detail11: this.temp_detail11,
-            temp_detail12: this.temp_detail12,
-            temp_detail13: this.temp_detail13,
-            temp_detail14: this.temp_detail14,
-            temp1: this.temp1,
-            temp2: this.temp2,
-            temp3: this.temp3,
-            temp4: this.temp4,
-            temp5: this.temp5,
-            temp6: this.temp6,
-            temp7: this.temp7,
-            temp8: this.temp8,
-            temp9: this.temp9,
-            temp10: this.temp10,
-            temp11: this.temp11,
-            temp12: this.temp12,
-            temp13: this.temp13,
-            temp14: this.temp14,
-            steam1: this.steam1,
-            steam2: this.steam2,
-            steam3: this.steam3,
-            steam4: this.steam4,
-            steam5: this.steam5,
-            steam6: this.steam6,
-            steam7: this.steam7,
-            steam8: this.steam8,
-            steam9: this.steam9,
-            steam10: this.steam10,
-            steam11: this.steam11,
-            steam12: this.steam12,
-            steam13: this.steam13,
-            steam14: this.steam14,
-            throat1: this.throat1,
-            throat2: this.throat2,
-            throat3: this.throat3,
-            throat4: this.throat4,
-            throat5: this.throat5,
-            throat6: this.throat6,
-            throat7: this.throat7,
-            throat8: this.throat8,
-            throat9: this.throat9,
-            throat10: this.throat10,
-            throat11: this.throat11,
-            throat12: this.throat12,
-            throat13: this.throat13,
-            throat14: this.throat14,
-            runny1: this.runny1,
-            runny2: this.runny2,
-            runny3: this.runny3,
-            runny4: this.runny4,
-            runny5: this.runny5,
-            runny6: this.runny6,
-            runny7: this.runny7,
-            runny8: this.runny8,
-            runny9: this.runny9,
-            runny10: this.runny10,
-            runny11: this.runny11,
-            runny12: this.runny12,
-            runny13: this.runny13,
-            runny14: this.runny14,
-            phlegm1: this.phlegm1,
-            phlegm2: this.phlegm2,
-            phlegm3: this.phlegm3,
-            phlegm4: this.phlegm4,
-            phlegm5: this.phlegm5,
-            phlegm6: this.phlegm6,
-            phlegm7: this.phlegm7,
-            phlegm8: this.phlegm8,
-            phlegm9: this.phlegm9,
-            phlegm10: this.phlegm10,
-            phlegm11: this.phlegm11,
-            phlegm12: this.phlegm12,
-            phlegm13: this.phlegm13,
-            phlegm14: this.phlegm14,
-            breath1: this.breath1,
-            breath2: this.breath2,
-            breath3: this.breath3,
-            breath4: this.breath4,
-            breath5: this.breath5,
-            breath6: this.breath6,
-            breath7: this.breath7,
-            breath8: this.breath8,
-            breath9: this.breath9,
-            breath10: this.breath10,
-            breath11: this.breath11,
-            breath12: this.breath12,
-            breath13: this.breath13,
-            breath14: this.breath14,
-            gasp1: this.gasp1,
-            gasp2: this.gasp2,
-            gasp3: this.gasp3,
-            gasp4: this.gasp4,
-            gasp5: this.gasp5,
-            gasp6: this.gasp6,
-            gasp7: this.gasp7,
-            gasp8: this.gasp8,
-            gasp9: this.gasp9,
-            gasp10: this.gasp10,
-            gasp11: this.gasp11,
-            gasp12: this.gasp12,
-            gasp13: this.gasp13,
-            gasp14: this.gasp14,
-            muscle1: this.muscle1,
-            muscle2: this.muscle2,
-            muscle3: this.muscle3,
-            muscle4: this.muscle4,
-            muscle5: this.muscle5,
-            muscle6: this.muscle6,
-            muscle7: this.muscle7,
-            muscle8: this.muscle8,
-            muscle9: this.muscle9,
-            muscle10: this.muscle10,
-            muscle11: this.muscle11,
-            muscle12: this.muscle12,
-            muscle13: this.muscle13,
-            muscle14: this.muscle14,
-            head1: this.head1,
-            head2: this.head2,
-            head3: this.head3,
-            head4: this.head4,
-            head5: this.head5,
-            head6: this.head6,
-            head7: this.head7,
-            head8: this.head8,
-            head9: this.head9,
-            head10: this.head10,
-            head11: this.head11,
-            head12: this.head12,
-            head13: this.head13,
-            head14: this.head14,
-            liquid1: this.liquid1,
-            liquid2: this.liquid2,
-            liquid3: this.liquid3,
-            liquid4: this.liquid4,
-            liquid5: this.liquid5,
-            liquid6: this.liquid6,
-            liquid7: this.liquid7,
-            liquid8: this.liquid8,
-            liquid9: this.liquid9,
-            liquid10: this.liquid10,
-            liquid11: this.liquid11,
-            liquid12: this.liquid12,
-            liquid13: this.liquid13,
-            liquid14: this.liquid14,
-            other_detail: this.other_detail,
-            other1: this.other1,
-            other2: this.other2,
-            other3: this.other3,
-            other4: this.other4,
-            other5: this.other5,
-            other6: this.other6,
-            other7: this.other7,
-            other8: this.other8,
-            other9: this.other9,
-            other10: this.other10,
-            other11: this.other11,
-            other12: this.other12,
-            other13: this.other13,
-            other14: this.other14,
-            informer1: this.informer1,
-            informer2: this.informer2,
-            informer3: this.informer3,
-            informer4: this.informer4,
-            informer5: this.informer5,
-            informer6: this.informer6,
-            informer7: this.informer7,
-            informer8: this.informer8,
-            informer9: this.informer9,
-            informer10: this.informer10,
-            informer11: this.informer11,
-            informer12: this.informer12,
-            informer13: this.informer13,
-            informer14: this.informer14,
-            user_create: this.form.token[0].fullname
-          
-          }
-        })
-        .then(response => {
-          this.message_res = response.data;
-          this.$buefy.notification.open({
-            message: this.message_res[0].message,
-            type: "is-success"
-          });
+        axios
+          .get(this.api_path + "save_data.php", {
+            params: {
+              prename: this.prename,
+              name: this.name,
+              hn: this.hn,
+              age: this.age,
+              occupation: this.occupation,
+              sex: this.sex,
+              idcard: this.idcard,
+              tel: this.tel,
+              mobile: this.mobile,
+              address: this.address,
+              village: this.village,
+              villname: this.villname,
+              soi: this.soi,
+              road: this.road,
+              subdistrict: this.subdistrict,
+              district: this.district,
+              province: this.province,
+              zipcode: this.zipcode,
+              travel: this.travel,
+              pui: this.pui,
+              startday: moment(this.startday, "YYYY/MM/DD ").format(
+                "YYYY/MM/DD "
+              ),
+              // startday:this.startday,
+              endday: moment(this.endday, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day1: moment(this.day1, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day2: moment(this.day2, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day3: moment(this.day3, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day4: moment(this.day4, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day5: moment(this.day5, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day6: moment(this.day6, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day7: moment(this.day7, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day8: moment(this.day8, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day9: moment(this.day9, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day10: moment(this.day10, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day11: moment(this.day11, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day12: moment(this.day12, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day13: moment(this.day13, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              day14: moment(this.day14, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+              temp_detail1: this.temp_detail1,
+              temp_detail2: this.temp_detail2,
+              temp_detail3: this.temp_detail3,
+              temp_detail4: this.temp_detail4,
+              temp_detail5: this.temp_detail5,
+              temp_detail6: this.temp_detail6,
+              temp_detail7: this.temp_detail7,
+              temp_detail8: this.temp_detail8,
+              temp_detail9: this.temp_detail9,
+              temp_detail10: this.temp_detail10,
+              temp_detail11: this.temp_detail11,
+              temp_detail12: this.temp_detail12,
+              temp_detail13: this.temp_detail13,
+              temp_detail14: this.temp_detail14,
+              temp1: this.temp1,
+              temp2: this.temp2,
+              temp3: this.temp3,
+              temp4: this.temp4,
+              temp5: this.temp5,
+              temp6: this.temp6,
+              temp7: this.temp7,
+              temp8: this.temp8,
+              temp9: this.temp9,
+              temp10: this.temp10,
+              temp11: this.temp11,
+              temp12: this.temp12,
+              temp13: this.temp13,
+              temp14: this.temp14,
+              steam1: this.steam1,
+              steam2: this.steam2,
+              steam3: this.steam3,
+              steam4: this.steam4,
+              steam5: this.steam5,
+              steam6: this.steam6,
+              steam7: this.steam7,
+              steam8: this.steam8,
+              steam9: this.steam9,
+              steam10: this.steam10,
+              steam11: this.steam11,
+              steam12: this.steam12,
+              steam13: this.steam13,
+              steam14: this.steam14,
+              throat1: this.throat1,
+              throat2: this.throat2,
+              throat3: this.throat3,
+              throat4: this.throat4,
+              throat5: this.throat5,
+              throat6: this.throat6,
+              throat7: this.throat7,
+              throat8: this.throat8,
+              throat9: this.throat9,
+              throat10: this.throat10,
+              throat11: this.throat11,
+              throat12: this.throat12,
+              throat13: this.throat13,
+              throat14: this.throat14,
+              runny1: this.runny1,
+              runny2: this.runny2,
+              runny3: this.runny3,
+              runny4: this.runny4,
+              runny5: this.runny5,
+              runny6: this.runny6,
+              runny7: this.runny7,
+              runny8: this.runny8,
+              runny9: this.runny9,
+              runny10: this.runny10,
+              runny11: this.runny11,
+              runny12: this.runny12,
+              runny13: this.runny13,
+              runny14: this.runny14,
+              phlegm1: this.phlegm1,
+              phlegm2: this.phlegm2,
+              phlegm3: this.phlegm3,
+              phlegm4: this.phlegm4,
+              phlegm5: this.phlegm5,
+              phlegm6: this.phlegm6,
+              phlegm7: this.phlegm7,
+              phlegm8: this.phlegm8,
+              phlegm9: this.phlegm9,
+              phlegm10: this.phlegm10,
+              phlegm11: this.phlegm11,
+              phlegm12: this.phlegm12,
+              phlegm13: this.phlegm13,
+              phlegm14: this.phlegm14,
+              breath1: this.breath1,
+              breath2: this.breath2,
+              breath3: this.breath3,
+              breath4: this.breath4,
+              breath5: this.breath5,
+              breath6: this.breath6,
+              breath7: this.breath7,
+              breath8: this.breath8,
+              breath9: this.breath9,
+              breath10: this.breath10,
+              breath11: this.breath11,
+              breath12: this.breath12,
+              breath13: this.breath13,
+              breath14: this.breath14,
+              gasp1: this.gasp1,
+              gasp2: this.gasp2,
+              gasp3: this.gasp3,
+              gasp4: this.gasp4,
+              gasp5: this.gasp5,
+              gasp6: this.gasp6,
+              gasp7: this.gasp7,
+              gasp8: this.gasp8,
+              gasp9: this.gasp9,
+              gasp10: this.gasp10,
+              gasp11: this.gasp11,
+              gasp12: this.gasp12,
+              gasp13: this.gasp13,
+              gasp14: this.gasp14,
+              muscle1: this.muscle1,
+              muscle2: this.muscle2,
+              muscle3: this.muscle3,
+              muscle4: this.muscle4,
+              muscle5: this.muscle5,
+              muscle6: this.muscle6,
+              muscle7: this.muscle7,
+              muscle8: this.muscle8,
+              muscle9: this.muscle9,
+              muscle10: this.muscle10,
+              muscle11: this.muscle11,
+              muscle12: this.muscle12,
+              muscle13: this.muscle13,
+              muscle14: this.muscle14,
+              head1: this.head1,
+              head2: this.head2,
+              head3: this.head3,
+              head4: this.head4,
+              head5: this.head5,
+              head6: this.head6,
+              head7: this.head7,
+              head8: this.head8,
+              head9: this.head9,
+              head10: this.head10,
+              head11: this.head11,
+              head12: this.head12,
+              head13: this.head13,
+              head14: this.head14,
+              liquid1: this.liquid1,
+              liquid2: this.liquid2,
+              liquid3: this.liquid3,
+              liquid4: this.liquid4,
+              liquid5: this.liquid5,
+              liquid6: this.liquid6,
+              liquid7: this.liquid7,
+              liquid8: this.liquid8,
+              liquid9: this.liquid9,
+              liquid10: this.liquid10,
+              liquid11: this.liquid11,
+              liquid12: this.liquid12,
+              liquid13: this.liquid13,
+              liquid14: this.liquid14,
+              other_detail: this.other_detail,
+              other1: this.other1,
+              other2: this.other2,
+              other3: this.other3,
+              other4: this.other4,
+              other5: this.other5,
+              other6: this.other6,
+              other7: this.other7,
+              other8: this.other8,
+              other9: this.other9,
+              other10: this.other10,
+              other11: this.other11,
+              other12: this.other12,
+              other13: this.other13,
+              other14: this.other14,
+              informer1: this.informer1,
+              informer2: this.informer2,
+              informer3: this.informer3,
+              informer4: this.informer4,
+              informer5: this.informer5,
+              informer6: this.informer6,
+              informer7: this.informer7,
+              informer8: this.informer8,
+              informer9: this.informer9,
+              informer10: this.informer10,
+              informer11: this.informer11,
+              informer12: this.informer12,
+              informer13: this.informer13,
+              informer14: this.informer14,
+              user_create: this.form.token[0].fullname
+            }
+          })
+          .then(response => {
+            this.message_res = response.data;
+            this.$buefy.notification.open({
+              message: this.message_res[0].message,
+              type: "is-success"
+            });
 
-          this.$router.push("/");
-        });
+            this.$router.push("/");
+          });
       }
     }
   }
