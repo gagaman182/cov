@@ -147,7 +147,7 @@ export default {
           field: "idcard"
         },
         {
-          label: "sex",
+          label: "เพศ",
           field: "sex"
         },
         {
