@@ -39,6 +39,14 @@
                 <div class="level-right">
                   <p class="subtitle">ID:{{ updateperson[0].id }}</p>
                 </div>
+                <b-field label="วันที่เริ่มป่วย">
+                  <b-datepicker
+                    placeholder="ระบุวันที่"
+                    editable
+                    v-model="startsick"
+                  ></b-datepicker>
+                </b-field>
+
                 <div class="columns">
                   <div class="column">
                     <b-field grouped>
@@ -3430,6 +3438,7 @@ export default {
       //api_path: "http://localhost/covid/cov/api/",
       //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       message_res: '',
+      startsick: '',
       prename: null,
       name: '',
       hn: '',
@@ -3733,6 +3742,7 @@ export default {
         .then(response => {
           // JSON responses are automatically parsed.
           this.updateperson = response.data;
+          this.startsick = new Date(this.updateperson[0].startsick);
           this.prename = this.updateperson[0].prename;
           this.name = this.updateperson[0].name;
           this.hn = this.updateperson[0].hn;
@@ -3989,6 +3999,9 @@ export default {
         .get(this.api_path + 'update_all.php', {
           params: {
             id: this.$route.params.id,
+            startsick: moment(this.startsick, 'YYYY/MM/DD ').format(
+              'YYYY/MM/DD '
+            ),
             prename: this.prename,
             name: this.name,
             hn: this.hn,

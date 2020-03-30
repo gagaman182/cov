@@ -3,7 +3,8 @@
    
 	 include 'conn.php';
 
-     $id = $_GET["id"];
+	 $id = $_GET["id"];
+	 $startsick = $_GET["startsick"];
 	 $prename = $_GET["prename"];
 	 $name = $_GET["name"];
 	 $hn = $_GET["hn"];
@@ -272,7 +273,7 @@
 
 
 
- $sql = "UPDATE cov_person SET prename='".$prename."' ,name = '".$name."' ,hn = '".$hn."' ,age = '".$age."',occupation = '".$occupation."',sex = '".$sex."',idcard = '".$idcard."',tel = '".$tel."',mobile = '".$mobile."',
+ $sql = "UPDATE cov_person SET startsick='".$startsick."' ,prename='".$prename."' ,name = '".$name."' ,hn = '".$hn."' ,age = '".$age."',occupation = '".$occupation."',sex = '".$sex."',idcard = '".$idcard."',tel = '".$tel."',mobile = '".$mobile."',
  address = '".$address."',village = '".$village."',villname = '".$villname."',soi = '".$soi."',road = '".$road."',subdistrict = '".$subdistrict."',
  district = '".$district."',province = '".$province."',zipcode = '".$zipcode."',travel = '".$travel."',pui = '".$pui."' , 
  startday = '".$startday."',endday = '".$endday."',day1 = '".$day1."',day2 = '".$day2."',day3 = '".$day3."',day4 = '".$day4."',day5 = '".$day5."',day6 = '".$day6."',

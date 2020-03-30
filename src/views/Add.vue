@@ -35,7 +35,14 @@
                 <span class="tag is-primary">
                   <p class="subtitle">ประวัติ</p>
                 </span>
-               
+                <b-field label="วันที่เริ่มป่วย">
+                  <b-datepicker
+                    placeholder="ระบุวันที่"
+                    editable
+                    v-model="startsick"
+                    required
+                  ></b-datepicker>
+                </b-field>
                 <div class="columns">
                   <div class="column">
                     <b-field grouped>
@@ -3400,10 +3407,11 @@ export default {
   name: 'Add',
   data() {
     return {
-       api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
       //api_path: 'http://192.168.4.3/webapp/tee/covid/api/',
       message_res: '',
+      startsick: '',
       prename: null,
       name: '',
       hn: '',
@@ -3729,6 +3737,7 @@ export default {
 
     adddata() {
       if (
+        !this.startsick ||
         !this.prename ||
         !this.name ||
         !this.hn ||
@@ -3742,6 +3751,9 @@ export default {
         axios
           .get(this.api_path + 'save_data.php', {
             params: {
+              startsick: moment(this.startsick, 'YYYY/MM/DD ').format(
+                'YYYY/MM/DD '
+              ),
               prename: this.prename,
               name: this.name,
               hn: this.hn,

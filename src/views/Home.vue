@@ -5,33 +5,56 @@
       :active.sync="isLoading"
       :can-cancel="true"
     ></b-loading>
-    <nav class="level">
-      <div class="level-item has-text-centered">
-        <div>
-          <p>จำนวนผู้สัมผัสรวม</p>
-          <p class="title">{{ count_person[0].total }}</p>
+    <article class="tile is-child box">
+      <p class="subtitle">
+        สถานะการณ์ผู้เชื้อไวรัส Covid-19 ในประเทศไทย
+      </p>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="subtitle">จำนวนผู้ติดเชื้อ</p>
+            <b-message type="is-warning ">
+              <p class="title has-text-centered">
+                {{ covid_data.confirmed.value }} คน
+              </p>
+            </b-message>
+          </div>
         </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p>เพศชาย</p>
-          <p class="title">{{ count_person[0].man }}</p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p>เพศหญิง</p>
-          <p class="title">{{ count_person[0].women }}</p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="reds">จำนวนผู้ติดเชื้อ</p>
-          <p class="title">0</p>
-        </div>
-      </div>
-    </nav>
 
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="subtitle">จำนวนผู้รักษาหาย</p>
+            <b-message type="is-success ">
+              <p class="title has-text-centered">
+                {{ covid_data.recovered.value }} คน
+              </p>
+            </b-message>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="subtitle">จำนวนผู้เสียชีวิต</p>
+            <b-message type="is-danger ">
+              <p class="title has-text-centered">
+                {{ covid_data.deaths.value }} คน
+              </p>
+            </b-message>
+          </div>
+        </div>
+      </nav>
+      <p>อัพเดตล่าสุด {{ covid_data.lastUpdate | formatDate }}</p>
+      <div class="field">
+        <b-tag
+          v-if="isTag1Active"
+          type="is-primary"
+          closable
+          aria-close-label="Close tag"
+          @close="isTag1Active = false"
+        >
+          Colored closable tag label
+        </b-tag>
+      </div>
+    </article>
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-12">
         <div class="card">
@@ -92,6 +115,32 @@
                 </b-navbar-item>
               </template>
             </b-navbar>
+            <nav class="level">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p>จำนวนผู้สัมผัสรวม</p>
+                  <p class="title">{{ count_person[0].total }}</p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p>เพศชาย</p>
+                  <p class="title">{{ count_person[0].man }}</p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p>เพศหญิง</p>
+                  <p class="title">{{ count_person[0].women }}</p>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="reds">จำนวนผู้ติดเชื้อ</p>
+                  <p class="title">0</p>
+                </div>
+              </div>
+            </nav>
             <vue-good-table
               :columns="columnperson"
               :rows="rowperson"
@@ -113,6 +162,7 @@
 <script>
 import axios from 'axios';
 import XLSX from 'xlsx'; // import xlsx
+import moment from 'moment';
 // @ is an alias to /src
 export default {
   name: 'Home',
@@ -156,6 +206,12 @@ export default {
         {
           label: 'ประเภทกลุ่มผู้ป่วย',
           field: 'pui',
+        },
+        {
+          label: 'วันที่เริ่มป่วย',
+          field: 'startsick',
+          dateInputFormat: 'DD-MM-YYYY  HH:mm:ss',
+          dateOutputFormat: 'DD-MM-YYYY HH:mm:ss',
         },
         {
           label: 'วันที่เริ่มติดตาม',
@@ -253,6 +309,8 @@ export default {
         this.ShowChart_tumbon();
         this.ShowChart_pui();
         this.ShowChart_pui_line();
+
+        this.api_covid();
       }
     },
     openLoading() {
@@ -310,6 +368,23 @@ export default {
     //double click ที่ตาราง
     PersonClick(params) {
       this.$router.push('/edit/' + params.row.id);
+    },
+    //apiข้อมลcovid จาก https://covid19.mathdro.id/api
+    api_covid() {
+      // show person
+      axios
+        .get('https://covid19.mathdro.id/api/countries/thailand')
+        .then(response => {
+          this.covid_data = response.data;
+        });
+    },
+  },
+  //แสดงวันที่ให้เป็นตาม format
+  filters: {
+    formatDate: function(value) {
+      if (value) {
+        return moment(String(value)).format('MM/DD/YYYY hh:mm');
+      }
     },
   },
 };

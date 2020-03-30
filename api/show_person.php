@@ -16,6 +16,7 @@
         when pui = 'lowrisk' then 'lowrisk'
 				when pui = 'hightrisk' then 'hightrisk'
 end as pui,
+startsick,
 startday,
 case WHEN total14 = 'true' then 'ครบ'  end  as total14
 
@@ -36,6 +37,7 @@ if ($result = mysqli_query( $conn, $sql )){
   $row_array['sex'] = $row['sex'];
   $row_array['tel'] = $row['tel'];
   $row_array['pui'] = $row['pui'];
+  $row_array['startsick'] = $row['startsick'];
   $row_array['startday'] = $row['startday'];
   $row_array['total14'] = $row['total14'];
 	

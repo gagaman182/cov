@@ -19,6 +19,7 @@ $return_arr = array();
 if ($result = mysqli_query( $conn, $sql )){
     while ($row = mysqli_fetch_assoc($result)) {
   $row_array['id'] = $row['id'];
+  $row_array['startsick'] = $row['startsick'];
   $row_array['prename'] = $row['prename'];
   $row_array['name'] = $row['name'];
   $row_array['hn'] = $row['hn'];
