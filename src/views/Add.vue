@@ -35,18 +35,17 @@
                 <span class="tag is-primary">
                   <p class="subtitle">ประวัติ</p>
                 </span>
-                <b-field label="วันที่เริ่มป่วย">
+                <b-field label="วันที่รับรายงาน*">
                   <b-datepicker
                     placeholder="ระบุวันที่"
                     editable
                     v-model="startsick"
-                    required
                   ></b-datepicker>
                 </b-field>
                 <div class="columns">
                   <div class="column">
                     <b-field grouped>
-                      <b-field label="ชื่อ-สกุล" expanded>
+                      <b-field label="ชื่อ-สกุล*" expanded>
                         <b-field>
                           <b-select
                             placeholder="คำนำหน้า"
@@ -60,7 +59,7 @@
                             <option value="นางสาว">นางสาว</option>
                           </b-select>
                           <b-input
-                            placeholder="ชื่อ-สกุล"
+                            placeholder="ชื่อ-สกุล*"
                             expanded
                             v-model="name"
                             required
@@ -72,7 +71,7 @@
                     </b-field>
                   </div>
                   <div class="column">
-                    <b-field label="HN">
+                    <b-field label="HN*">
                       <b-input
                         placeholder="HN"
                         size="is-medium"
@@ -84,7 +83,7 @@
                     </b-field>
                   </div>
                   <div class="column">
-                    <b-field label="อายุ">
+                    <b-field label="อายุ*">
                       <b-input
                         placeholder="ปี"
                         size="is-medium"
@@ -130,7 +129,7 @@
                     </b-field>
                   </div>
                   <div class="column">
-                    <b-field label="เพศ">
+                    <b-field label="เพศ*">
                       <b-select
                         placeholder="เพศ"
                         size="is-medium"
@@ -144,7 +143,7 @@
                     </b-field>
                   </div>
                   <div class="column">
-                    <b-field label="เลขที่บัตรประชาชน">
+                    <b-field label="เลขที่บัตรประชาชน*">
                       <b-input
                         placeholder="เลขบัตร"
                         size="is-medium"
@@ -315,7 +314,7 @@
             <p class="subtitle">ตารางติดตาม 14 วัน</p>
             <div class="columns">
               <div class="column">
-                <b-field label="วันที่เริ่มต้น">
+                <b-field label="วันที่เริ่มต้น*">
                   <b-datepicker
                     placeholder="ระบุวันที่"
                     editable
@@ -3407,9 +3406,9 @@ export default {
   name: 'Add',
   data() {
     return {
-      api_path: 'http://192.168.5.187/0161/covid/cov/api/',
+      //api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
-      //api_path: 'http://192.168.4.3/webapp/tee/covid/api/',
+      api_path: 'http://192.168.4.3/webapp/tee/covid/api/',
       message_res: '',
       startsick: '',
       prename: null,

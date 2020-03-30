@@ -14,7 +14,7 @@
  tel,
  case when pui = 'pui' then 'pui' 
         when pui = 'lowrisk' then 'lowrisk'
-				when pui = 'hightrisk' then 'hightrisk'
+				when pui = 'highrisk' then 'highrisk'
 end as pui,
 startsick,
 startday,

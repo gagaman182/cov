@@ -84,7 +84,7 @@
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="subtitle">
-                  กราฟเส้นแสดงเปรียบเทียบระหว่าง rowrisk กับ hightrisk
+                  กราฟเส้นแสดงเปรียบเทียบระหว่าง RowRisk กับ HighRisk
                 </p>
                 <div class="chart">
                   <line-chart :data="data_pui_line" area />
@@ -169,9 +169,9 @@ export default {
 
   data() {
     return {
-      api_path: 'http://192.168.5.187/0161/covid/cov/api/',
+      //api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
-      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       // name: null,
       count_person: '',
       columnperson: [
@@ -251,7 +251,7 @@ export default {
           value: 15,
         },
         {
-          name: 'hightrisk',
+          name: 'highrisk',
           value: 8,
         },
       ],

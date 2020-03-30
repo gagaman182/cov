@@ -39,7 +39,7 @@
                 <div class="level-right">
                   <p class="subtitle">ID:{{ updateperson[0].id }}</p>
                 </div>
-                <b-field label="วันที่เริ่มป่วย">
+                <b-field label="วันที่รับรายงาน">
                   <b-datepicker
                     placeholder="ระบุวันที่"
                     editable
@@ -279,9 +279,9 @@
                       <b-radio
                         v-model="pui"
                         name="name"
-                        native-value="hightrisk"
+                        native-value="highrisk"
                       >
-                        HIGHTRISK
+                        HIGHRISK
                       </b-radio>
                       <b-radio v-model="pui" name="name" native-value="lowrisk">
                         LOWRISK
@@ -336,12 +336,7 @@
                     @input="selectend()"
                   ></b-datepicker>
                 </b-field>
-                <!-- <b-field label="วันที่สิ้นสุด">
-                <b-input 
-                placeholder="ระบุวันที่" 
-                v-model="endday" 
-                disabled></b-input>
-            </b-field> -->
+                
               </div>
             </div>
             <div class="content ">
@@ -3434,9 +3429,9 @@ export default {
   name: 'Add',
   data() {
     return {
-      api_path: 'http://192.168.5.187/0161/covid/cov/api/',
+      //api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
-      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       message_res: '',
       startsick: '',
       prename: null,
