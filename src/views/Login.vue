@@ -41,44 +41,44 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
-  name: "maintable",
+  name: 'maintable',
   data() {
     return {
-        api_path: "http://192.168.5.187/0161/covid/cov/api/",
+      // api_path: "http://192.168.5.187/0161/covid/cov/api/",
       //api_path: "http://localhost/covid/cov/api/",
-     // api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      api_path: 'http://192.168.4.3/webapp/tee/covid/api/',
       form: {
-        username: "",
-        password: "",
-        token: ""
+        username: '',
+        password: '',
+        token: '',
       },
-      loginok: "",
-      tokens: "",
-      erroralert: ""
+      loginok: '',
+      tokens: '',
+      erroralert: '',
     };
   },
   methods: {
     login() {
       axios
-        .get(this.api_path + "logincheck.php", {
+        .get(this.api_path + 'logincheck.php', {
           params: {
             username: this.form.username,
-            password: this.form.password
-          }
+            password: this.form.password,
+          },
         })
         .then(response => {
           this.form.tokens = response.data;
-          localStorage.setItem("token", JSON.stringify(this.form.tokens));
-          this.form.token = JSON.parse(localStorage.getItem("token"));
-          if (this.form.token[0].state == "no") {
+          localStorage.setItem('token', JSON.stringify(this.form.tokens));
+          this.form.token = JSON.parse(localStorage.getItem('token'));
+          if (this.form.token[0].state == 'no') {
             this.popuplogin();
             this.clear();
             // alert("no")
-            this.$router.push("/login");
+            this.$router.push('/login');
           } else {
-            this.$router.push("/");
+            this.$router.push('/');
           }
         });
     },
@@ -86,21 +86,21 @@ export default {
       this.notif = this.$buefy.notification.open({
         duration: 5000,
         message: this.form.token[0].message,
-        position: "is-bottom-right",
-        type: "is-danger",
-        hasIcon: true
+        position: 'is-bottom-right',
+        type: 'is-danger',
+        hasIcon: true,
       });
     },
     clear() {
-      this.form.username = "";
-      this.form.password = "";
-    }
-  }
+      this.form.username = '';
+      this.form.password = '';
+    },
+  },
 };
 </script>
 <style>
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 .googlefont {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 </style>

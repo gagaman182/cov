@@ -95,9 +95,9 @@
             <vue-good-table
               :columns="columnperson"
               :rows="rowperson"
-              :search-options="{ enabled: true }"
+              :search-options="{enabled: true}"
               ref="persontableref"
-              :pagination-options="{ enabled: true }"
+              :pagination-options="{enabled: true}"
               :totalRows="totalRecords"
               @on-row-dblclick="PersonClick"
               theme="black-rhino"
@@ -112,120 +112,120 @@
 </template>
 
 <script>
-import axios from "axios";
-import XLSX from "xlsx"; // import xlsx
+import axios from 'axios';
+import XLSX from 'xlsx'; // import xlsx
 // @ is an alias to /src
 export default {
-  name: "Home",
+  name: 'Home',
 
   data() {
     return {
-       api_path: "http://192.168.5.187/0161/covid/cov/api/",
+     // api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
-      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       // name: null,
-      count_person: "",
+      count_person: '',
       columnperson: [
         {
-          label: "id",
-          field: "id"
+          label: 'id',
+          field: 'id',
         },
         {
-          label: "ชื่อ-สกุล",
-          field: "name"
+          label: 'ชื่อ-สกุล',
+          field: 'name',
         },
         {
-          label: "HN",
-          field: "hn"
+          label: 'HN',
+          field: 'hn',
         },
         {
-          label: "อายุ",
-          field: "age"
+          label: 'อายุ',
+          field: 'age',
         },
         {
-          label: "เลขบัตรประชาชน",
-          field: "idcard"
+          label: 'เลขบัตรประชาชน',
+          field: 'idcard',
         },
         {
-          label: "เพศ",
-          field: "sex"
+          label: 'เพศ',
+          field: 'sex',
         },
         {
-          label: "เบอร์โทร",
-          field: "tel"
+          label: 'เบอร์โทร',
+          field: 'tel',
         },
         {
-          label: "ประเภทกลุ่มผู้ป่วย",
-          field: "pui"
+          label: 'ประเภทกลุ่มผู้ป่วย',
+          field: 'pui',
         },
         {
-          label: "วันที่เริ่มติดตาม",
-          field: "startday",
-          dateInputFormat: "DD-MM-YYYY  HH:mm:ss",
-          dateOutputFormat: "DD-MM-YYYY HH:mm:ss"
+          label: 'วันที่เริ่มติดตาม',
+          field: 'startday',
+          dateInputFormat: 'DD-MM-YYYY  HH:mm:ss',
+          dateOutputFormat: 'DD-MM-YYYY HH:mm:ss',
         },
         {
-          label: "เฝ้าระวังครบ 14 วัน",
-          field: "total14"
-        }
+          label: 'เฝ้าระวังครบ 14 วัน',
+          field: 'total14',
+        },
       ],
       // rowperson: [],
       totalRecords: 0,
       data_tumbon: [
         {
-          name: "year",
+          name: 'year',
           data: [
             {
-              label: "หาดใหญ่",
-              value: 45
+              label: 'หาดใหญ่',
+              value: 45,
             },
             {
-              label: "พะตง",
-              value: 60
-            }
-          ]
-        }
+              label: 'พะตง',
+              value: 60,
+            },
+          ],
+        },
       ],
       data_pui: [
         {
-          name: "pui",
-          value: 30
+          name: 'pui',
+          value: 30,
         },
         {
-          name: "rowrisk",
-          value: 15
+          name: 'rowrisk',
+          value: 15,
         },
         {
-          name: "hightrisk",
-          value: 8
-        }
+          name: 'hightrisk',
+          value: 8,
+        },
       ],
       data_pui_line: [
         {
-          name: "rowrisk",
+          name: 'rowrisk',
           data: [
-            { label: "2016", value: 1040000 },
-            { label: "2017", value: 1200000 },
-            { label: "2018", value: 1800000 },
-            { label: "2019", value: 2000000 }
-          ]
+            {label: '2016', value: 1040000},
+            {label: '2017', value: 1200000},
+            {label: '2018', value: 1800000},
+            {label: '2019', value: 2000000},
+          ],
         },
         {
-          name: "hightrisk",
+          name: 'hightrisk',
           data: [
-            { label: "2016", value: 1040000 },
-            { label: "2017", value: 1200000 },
-            { label: "2018", value: 600000 },
-            { label: "2019", value: 700000 }
-          ]
-        }
+            {label: '2016', value: 1040000},
+            {label: '2017', value: 1200000},
+            {label: '2018', value: 600000},
+            {label: '2019', value: 700000},
+          ],
+        },
       ],
       form: {
-        token: ""
+        token: '',
       },
       isLoading: false,
       isFullPage: true,
-      json_excel: []
+      json_excel: [],
     };
   },
   created() {},
@@ -236,12 +236,12 @@ export default {
   methods: {
     LoadPage() {
       // session login
-      this.form.token = JSON.parse(localStorage.getItem("token"));
+      this.form.token = JSON.parse(localStorage.getItem('token'));
 
       //  alert(this.form.token[0].token )
 
       if (this.form.token == undefined) {
-        this.$router.push("/login");
+        this.$router.push('/login');
       } else {
         this.openLoading();
         //แสดงการนับจำนวน
@@ -263,55 +263,55 @@ export default {
     },
     //ปุ่มเพิ่ม
     clickadd() {
-      this.$router.push("/add");
+      this.$router.push('/add');
     },
     //สงออก excel
     clickexcel() {
-      axios.get(this.api_path + "show_person.php").then(response => {
+      axios.get(this.api_path + 'show_person.php').then(response => {
         this.json_excel = response.data;
         const dataWS = XLSX.utils.json_to_sheet(this.json_excel);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, dataWS);
-        XLSX.writeFile(wb, "export.xlsx");
+        XLSX.writeFile(wb, 'export.xlsx');
       });
     },
     CountPerson() {
       // count person
-      axios.get(this.api_path + "count_person.php").then(response => {
+      axios.get(this.api_path + 'count_person.php').then(response => {
         this.count_person = response.data;
       });
     },
     ShowPerson() {
       // show person
-      axios.get(this.api_path + "show_person.php").then(response => {
+      axios.get(this.api_path + 'show_person.php').then(response => {
         this.rowperson = response.data;
       });
     },
     ShowChart_tumbon() {
       // show person
-      axios.get(this.api_path + "chart_tumbon.php").then(response => {
+      axios.get(this.api_path + 'chart_tumbon.php').then(response => {
         this.data_tumbon = response.data;
       });
     },
     ShowChart_pui() {
       // show person
-      axios.get(this.api_path + "chart_pui.php").then(response => {
+      axios.get(this.api_path + 'chart_pui.php').then(response => {
         this.data_pui = response.data;
       });
     },
 
     ShowChart_pui_line() {
       // show person
-      axios.get(this.api_path + "chart_pui_line.php").then(response => {
+      axios.get(this.api_path + 'chart_pui_line.php').then(response => {
         this.data_pui_line = response.data;
       });
     },
 
     //double click ที่ตาราง
     PersonClick(params) {
-      this.$router.push("/edit/" + params.row.id);
-    }
-  }
+      this.$router.push('/edit/' + params.row.id);
+    },
+  },
 };
 </script>
 <style>

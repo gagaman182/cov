@@ -88,8 +88,8 @@
                       >
                       </b-input>
                     </b-field>
-                  </div>  
-                      <div class="column">
+                  </div>
+                  <div class="column">
                     <b-field label="เบอร์โทร">
                       <b-input
                         placeholder="เบอร์โทร"
@@ -99,10 +99,9 @@
                       </b-input>
                     </b-field>
                   </div>
-
                 </div>
                 <div class="columns">
-                   <div class="column">
+                  <div class="column">
                     <b-field label="มือถือ">
                       <b-input
                         placeholder="มือถือ"
@@ -273,8 +272,8 @@
                       >
                         HIGHTRISK
                       </b-radio>
-                      <b-radio v-model="pui" name="name" native-value="rowrisk">
-                        ROWRISK
+                      <b-radio v-model="pui" name="name" native-value="lowrisk">
+                        LOWRISK
                       </b-radio>
                     </div>
                   </div>
@@ -3418,284 +3417,284 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import moment from "moment";
+import axios from 'axios';
+import moment from 'moment';
 export default {
-  name: "Add",
+  name: 'Add',
   data() {
     return {
-        api_path: "http://192.168.5.187/0161/covid/cov/api/",
+     // api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
-      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
-      message_res: "",
+      api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      message_res: '',
       prename: null,
-      name: "",
-      hn: "",
-      age: "",
-      occupation: "",
-      sex: "",
-      idcard: "",
-      tel:"",
-      mobile:"",
-      address: "",
-      village: "",
-      villname: "",
-      soi: "",
-      road: "",
-      subdistrict: "",
-      district: "",
-      province: "",
-      travel: "",
-      pui: "",
-      startday: "",
-      endday: "",
+      name: '',
+      hn: '',
+      age: '',
+      occupation: '',
+      sex: '',
+      idcard: '',
+      tel: '',
+      mobile: '',
+      address: '',
+      village: '',
+      villname: '',
+      soi: '',
+      road: '',
+      subdistrict: '',
+      district: '',
+      province: '',
+      travel: '',
+      pui: '',
+      startday: '',
+      endday: '',
       dates: [],
-      day1: "",
-      day2: "",
-      day3: "",
+      day1: '',
+      day2: '',
+      day3: '',
       day4: null,
-      day5: "",
-      day6: "",
-      day7: "",
-      day8: "",
-      day9: "",
-      day10: "",
-      day11: "",
-      day12: "",
-      day13: "",
-      day14: "",
-      temp_detail1: "",
-      temp_detail2: "",
-      temp_detail3: "",
-      temp_detail4: "",
-      temp_detail5: "",
-      temp_detail6: "",
-      temp_detail7: "",
-      temp_detail8: "",
-      temp_detail9: "",
-      temp_detail10: "",
-      temp_detail11: "",
-      temp_detail12: "",
-      temp_detail13: "",
-      temp_detail14: "",
-      temp1: "",
-      temp2: "",
-      temp3: "",
-      temp4: "",
-      temp5: "",
-      temp6: "",
-      temp7: "",
-      temp8: "",
-      temp9: "",
-      temp10: "",
-      temp11: "",
-      temp12: "",
-      temp13: "",
-      temp14: "",
-      steam1: "",
-      steam2: "",
-      steam3: "",
-      steam4: "",
-      steam5: "",
-      steam6: "",
-      steam7: "",
-      steam8: "",
-      steam9: "",
-      steam10: "",
-      steam11: "",
-      steam12: "",
-      steam13: "",
-      steam14: "",
-      throat1: "",
-      throat2: "",
-      throat3: "",
-      throat4: "",
-      throat5: "",
-      throat6: "",
-      throat7: "",
-      throat8: "",
-      throat9: "",
-      throat10: "",
-      throat11: "",
-      throat12: "",
-      throat13: "",
-      throat14: "",
-      runny1: "",
-      runny2: "",
-      runny3: "",
-      runny4: "",
-      runny5: "",
-      runny6: "",
-      runny7: "",
-      runny8: "",
-      runny9: "",
-      runny10: "",
-      runny11: "",
-      runny12: "",
-      runny13: "",
-      runny14: "",
-      phlegm1: "",
-      phlegm2: "",
-      phlegm3: "",
-      phlegm4: "",
-      phlegm5: "",
-      phlegm6: "",
-      phlegm7: "",
-      phlegm8: "",
-      phlegm9: "",
-      phlegm10: "",
-      phlegm11: "",
-      phlegm12: "",
-      phlegm13: "",
-      phlegm14: "",
-      breath1: "",
-      breath2: "",
-      breath3: "",
-      breath4: "",
-      breath5: "",
-      breath6: "",
-      breath7: "",
-      breath8: "",
-      breath9: "",
-      breath10: "",
-      breath11: "",
-      breath12: "",
-      breath13: "",
-      breath14: "",
-      gasp1: "",
-      gasp2: "",
-      gasp3: "",
-      gasp4: "",
-      gasp5: "",
-      gasp6: "",
-      gasp7: "",
-      gasp8: "",
-      gasp9: "",
-      gasp10: "",
-      gasp11: "",
-      gasp12: "",
-      gasp13: "",
-      gasp14: "",
-      muscle1: "",
-      muscle2: "",
-      muscle3: "",
-      muscle4: "",
-      muscle5: "",
-      muscle6: "",
-      muscle7: "",
-      muscle8: "",
-      muscle9: "",
-      muscle10: "",
-      muscle11: "",
-      muscle12: "",
-      muscle13: "",
-      muscle14: "",
-      head1: "",
-      head2: "",
-      head3: "",
-      head4: "",
-      head5: "",
-      head6: "",
-      head7: "",
-      head8: "",
-      head9: "",
-      head10: "",
-      head11: "",
-      head12: "",
-      head13: "",
-      head14: "",
-      liquid1: "",
-      liquid2: "",
-      liquid3: "",
-      liquid4: "",
-      liquid5: "",
-      liquid6: "",
-      liquid7: "",
-      liquid8: "",
-      liquid9: "",
-      liquid10: "",
-      liquid11: "",
-      liquid12: "",
-      liquid13: "",
-      liquid14: "",
-      other_detail: "",
-      other1: "",
-      other2: "",
-      other3: "",
-      other4: "",
-      other5: "",
-      other6: "",
-      other7: "",
-      other8: "",
-      other9: "",
-      other10: "",
-      other11: "",
-      other12: "",
-      other13: "",
-      other14: "",
-      informer1: "",
-      informer2: "",
-      informer3: "",
-      informer4: "",
-      informer5: "",
-      informer6: "",
-      informer7: "",
-      informer8: "",
-      informer9: "",
-      informer10: "",
-      informer11: "",
-      informer12: "",
-      informer13: "",
-      informer14: "",
+      day5: '',
+      day6: '',
+      day7: '',
+      day8: '',
+      day9: '',
+      day10: '',
+      day11: '',
+      day12: '',
+      day13: '',
+      day14: '',
+      temp_detail1: '',
+      temp_detail2: '',
+      temp_detail3: '',
+      temp_detail4: '',
+      temp_detail5: '',
+      temp_detail6: '',
+      temp_detail7: '',
+      temp_detail8: '',
+      temp_detail9: '',
+      temp_detail10: '',
+      temp_detail11: '',
+      temp_detail12: '',
+      temp_detail13: '',
+      temp_detail14: '',
+      temp1: '',
+      temp2: '',
+      temp3: '',
+      temp4: '',
+      temp5: '',
+      temp6: '',
+      temp7: '',
+      temp8: '',
+      temp9: '',
+      temp10: '',
+      temp11: '',
+      temp12: '',
+      temp13: '',
+      temp14: '',
+      steam1: '',
+      steam2: '',
+      steam3: '',
+      steam4: '',
+      steam5: '',
+      steam6: '',
+      steam7: '',
+      steam8: '',
+      steam9: '',
+      steam10: '',
+      steam11: '',
+      steam12: '',
+      steam13: '',
+      steam14: '',
+      throat1: '',
+      throat2: '',
+      throat3: '',
+      throat4: '',
+      throat5: '',
+      throat6: '',
+      throat7: '',
+      throat8: '',
+      throat9: '',
+      throat10: '',
+      throat11: '',
+      throat12: '',
+      throat13: '',
+      throat14: '',
+      runny1: '',
+      runny2: '',
+      runny3: '',
+      runny4: '',
+      runny5: '',
+      runny6: '',
+      runny7: '',
+      runny8: '',
+      runny9: '',
+      runny10: '',
+      runny11: '',
+      runny12: '',
+      runny13: '',
+      runny14: '',
+      phlegm1: '',
+      phlegm2: '',
+      phlegm3: '',
+      phlegm4: '',
+      phlegm5: '',
+      phlegm6: '',
+      phlegm7: '',
+      phlegm8: '',
+      phlegm9: '',
+      phlegm10: '',
+      phlegm11: '',
+      phlegm12: '',
+      phlegm13: '',
+      phlegm14: '',
+      breath1: '',
+      breath2: '',
+      breath3: '',
+      breath4: '',
+      breath5: '',
+      breath6: '',
+      breath7: '',
+      breath8: '',
+      breath9: '',
+      breath10: '',
+      breath11: '',
+      breath12: '',
+      breath13: '',
+      breath14: '',
+      gasp1: '',
+      gasp2: '',
+      gasp3: '',
+      gasp4: '',
+      gasp5: '',
+      gasp6: '',
+      gasp7: '',
+      gasp8: '',
+      gasp9: '',
+      gasp10: '',
+      gasp11: '',
+      gasp12: '',
+      gasp13: '',
+      gasp14: '',
+      muscle1: '',
+      muscle2: '',
+      muscle3: '',
+      muscle4: '',
+      muscle5: '',
+      muscle6: '',
+      muscle7: '',
+      muscle8: '',
+      muscle9: '',
+      muscle10: '',
+      muscle11: '',
+      muscle12: '',
+      muscle13: '',
+      muscle14: '',
+      head1: '',
+      head2: '',
+      head3: '',
+      head4: '',
+      head5: '',
+      head6: '',
+      head7: '',
+      head8: '',
+      head9: '',
+      head10: '',
+      head11: '',
+      head12: '',
+      head13: '',
+      head14: '',
+      liquid1: '',
+      liquid2: '',
+      liquid3: '',
+      liquid4: '',
+      liquid5: '',
+      liquid6: '',
+      liquid7: '',
+      liquid8: '',
+      liquid9: '',
+      liquid10: '',
+      liquid11: '',
+      liquid12: '',
+      liquid13: '',
+      liquid14: '',
+      other_detail: '',
+      other1: '',
+      other2: '',
+      other3: '',
+      other4: '',
+      other5: '',
+      other6: '',
+      other7: '',
+      other8: '',
+      other9: '',
+      other10: '',
+      other11: '',
+      other12: '',
+      other13: '',
+      other14: '',
+      informer1: '',
+      informer2: '',
+      informer3: '',
+      informer4: '',
+      informer5: '',
+      informer6: '',
+      informer7: '',
+      informer8: '',
+      informer9: '',
+      informer10: '',
+      informer11: '',
+      informer12: '',
+      informer13: '',
+      informer14: '',
       informerall: [
         {
           id: 1,
-          name: "รุ่งฤดี"
+          name: 'รุ่งฤดี',
         },
         {
           id: 2,
-          name: "สุภาภัตร์"
+          name: 'สุภาภัตร์',
         },
         {
           id: 3,
-          name: "ณฐวรรณ์"
+          name: 'ณฐวรรณ์',
         },
         {
           id: 4,
-          name: "มณีกาญจน์"
+          name: 'มณีกาญจน์',
         },
         {
           id: 5,
-          name: "อุมาวดี"
+          name: 'อุมาวดี',
         },
         {
           id: 6,
-          name: "กมลชนก"
+          name: 'กมลชนก',
         },
         {
           id: 7,
-          name: "ณัฐวรรณ"
+          name: 'ณัฐวรรณ',
         },
         {
           id: 8,
-          name: "ศศิประภา"
+          name: 'ศศิประภา',
         },
         {
           id: 9,
-          name: "อัยลดา"
-        }
+          name: 'อัยลดา',
+        },
       ],
 
-      user_create: "",
-      updateperson: "",
+      user_create: '',
+      updateperson: '',
       id: this.$route.params.id,
       form: {
-        token: ""
+        token: '',
       },
-      romove_message: "",
-      total14: "",
+      romove_message: '',
+      total14: '',
       isLoading: false,
-      isFullPage: true
+      isFullPage: true,
     };
   },
   computed: {},
@@ -3707,11 +3706,11 @@ export default {
   methods: {
     LoadPage() {
       // session login
-      this.form.token = JSON.parse(localStorage.getItem("token"));
+      this.form.token = JSON.parse(localStorage.getItem('token'));
 
       //  alert(this.form.token[0].token);
       if (this.form.token == undefined) {
-        this.$router.push("/login");
+        this.$router.push('/login');
       } else {
         this.openLoading();
         //ดึงข้อมูลจาก database มาใช้ใส่ textbox
@@ -3723,10 +3722,10 @@ export default {
       this.openLoading();
       window.scrollTo(0, 0);
       axios
-        .get(this.api_path + "edit_person.php", {
+        .get(this.api_path + 'edit_person.php', {
           params: {
-            num: this.id //num last
-          }
+            num: this.id, //num last
+          },
         })
         .then(response => {
           // JSON responses are automatically parsed.
@@ -3984,7 +3983,7 @@ export default {
     },
     adddata() {
       axios
-        .get(this.api_path + "update_all.php", {
+        .get(this.api_path + 'update_all.php', {
           params: {
             id: this.$route.params.id,
             prename: this.prename,
@@ -4007,24 +4006,24 @@ export default {
             zipcode: this.zipcode,
             travel: this.travel,
             pui: this.pui,
-            startday: moment(this.startday, "YYYY/MM/DD ").format(
-              "YYYY/MM/DD "
+            startday: moment(this.startday, 'YYYY/MM/DD ').format(
+              'YYYY/MM/DD '
             ),
-            endday: moment(this.endday, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day1: moment(this.day1, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day2: moment(this.day2, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day3: moment(this.day3, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day4: moment(this.day4, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day5: moment(this.day5, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day6: moment(this.day6, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day7: moment(this.day7, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day8: moment(this.day8, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day9: moment(this.day9, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day10: moment(this.day10, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day11: moment(this.day11, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day12: moment(this.day12, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day13: moment(this.day13, "YYYY/MM/DD ").format("YYYY/MM/DD "),
-            day14: moment(this.day14, "YYYY/MM/DD ").format("YYYY/MM/DD "),
+            endday: moment(this.endday, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day1: moment(this.day1, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day2: moment(this.day2, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day3: moment(this.day3, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day4: moment(this.day4, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day5: moment(this.day5, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day6: moment(this.day6, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day7: moment(this.day7, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day8: moment(this.day8, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day9: moment(this.day9, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day10: moment(this.day10, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day11: moment(this.day11, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day12: moment(this.day12, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day13: moment(this.day13, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
+            day14: moment(this.day14, 'YYYY/MM/DD ').format('YYYY/MM/DD '),
             temp_detail1: this.temp_detail1,
             temp_detail2: this.temp_detail2,
             temp_detail3: this.temp_detail3,
@@ -4209,16 +4208,16 @@ export default {
             informer13: this.informer13,
             informer14: this.informer14,
             user_update: this.form.token[0].fullname,
-            total14: this.total14
-          }
+            total14: this.total14,
+          },
         })
         .then(response => {
           this.message_res = response.data;
           this.$buefy.notification.open({
             message: this.message_res[0].message,
-            type: "is-success"
+            type: 'is-success',
           });
-          this.$router.push("/");
+          this.$router.push('/');
         });
     },
     openLoading() {
@@ -4230,34 +4229,34 @@ export default {
     //แจ้งเตือนการลบ
     confirmdelete() {
       this.$buefy.dialog.confirm({
-        title: "แจ้งเตือนลบข้อมูล",
-        message: "ท่านแน่ใจว่าจะลบข้อมูล<b>" + this.name + "</b> ออกจากระบบ",
-        confirmText: "ยืนยัน",
-        type: "is-danger",
+        title: 'แจ้งเตือนลบข้อมูล',
+        message: 'ท่านแน่ใจว่าจะลบข้อมูล<b>' + this.name + '</b> ออกจากระบบ',
+        confirmText: 'ยืนยัน',
+        type: 'is-danger',
         hasIcon: true,
-        onConfirm: () => this.removeperson()
+        onConfirm: () => this.removeperson(),
       });
     },
     //ยืนยันการลบ
     removeperson() {
       axios
-        .get(this.api_path + "remove_person.php", {
+        .get(this.api_path + 'remove_person.php', {
           params: {
             id: this.id,
             user_remove: this.form.token[0].fullname,
-            idcard_remove: this.idcard
-          }
+            idcard_remove: this.idcard,
+          },
         })
         .then(response => {
           this.romove_message = response.data;
           this.$buefy.notification.open({
             message: this.romove_message[0].message,
-            type: "is-danger"
+            type: 'is-danger',
           });
-          this.$router.push("/");
+          this.$router.push('/');
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
