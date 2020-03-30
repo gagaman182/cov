@@ -36,6 +36,9 @@
                 <span class="tag is-primary">
                   <p class="subtitle">ประวัติ</p>
                 </span>
+                <div class="level-right">
+                  <p class="subtitle">ID:{{ updateperson[0].id }}</p>
+                </div>
                 <div class="columns">
                   <div class="column">
                     <b-field grouped>
@@ -3423,9 +3426,9 @@ export default {
   name: 'Add',
   data() {
     return {
-     // api_path: 'http://192.168.5.187/0161/covid/cov/api/',
+      api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
-      api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       message_res: '',
       prename: null,
       name: '',

@@ -13,7 +13,7 @@
  sex,
  tel,
  case when pui = 'pui' then 'pui' 
-        when pui = 'lowrisk' then 'rowrisk'
+        when pui = 'lowrisk' then 'lowrisk'
 				when pui = 'hightrisk' then 'hightrisk'
 end as pui,
 startday,

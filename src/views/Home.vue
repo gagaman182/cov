@@ -103,7 +103,6 @@
               theme="black-rhino"
               :line-numbers="true"
             />
-            <pre>{{ on_excel }}</pre>
           </article>
         </div>
       </div>
@@ -120,9 +119,9 @@ export default {
 
   data() {
     return {
-     // api_path: 'http://192.168.5.187/0161/covid/cov/api/',
+      api_path: 'http://192.168.5.187/0161/covid/cov/api/',
       //api_path: "http://localhost/covid/cov/api/",
-      api_path: "http://192.168.4.3/webapp/tee/covid/api/",
+      //api_path: "http://192.168.4.3/webapp/tee/covid/api/",
       // name: null,
       count_person: '',
       columnperson: [
@@ -226,6 +225,7 @@ export default {
       isLoading: false,
       isFullPage: true,
       json_excel: [],
+      covid_data: '',
     };
   },
   created() {},
