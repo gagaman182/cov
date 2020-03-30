@@ -10,7 +10,7 @@
 FROM
  cov_person
 WHERE
- pui = 'rowrisk'
+ pui = 'lowrisk'
 GROUP BY date_format(startday,'%d-%m-%Y')
 ORDER BY startday"
   ;
@@ -40,7 +40,7 @@ if ($result = mysqli_query( $conn, $sql )){
   FROM
    cov_person
   WHERE
-   pui = 'hightrisk'
+   pui = 'highrisk'
   GROUP BY date_format(startday,'%d-%m-%Y')
   ORDER BY startday"
   
