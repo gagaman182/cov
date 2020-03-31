@@ -71,6 +71,7 @@ export default {
         .then(response => {
           this.form.tokens = response.data;
           localStorage.setItem('token', JSON.stringify(this.form.tokens));
+          localStorage.setItem('saved', new Date().getTime());
           this.form.token = JSON.parse(localStorage.getItem('token'));
           if (this.form.token[0].state == 'no') {
             this.popuplogin();

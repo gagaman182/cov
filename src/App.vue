@@ -78,21 +78,28 @@ export default {
   data() {
     return {
       form: {
-        token: ""
+        token: '',
       },
-      user: ""
+      user: '',
     };
   },
   methods: {
     signout: function() {
-      localStorage.removeItem("token");
+      localStorage.removeItem('token');
       localStorage.clear();
-      this.$router.push("/login");
-    }
+      this.$router.push('/login');
+    },
   },
   mounted() {
-    this.form.token = JSON.parse(localStorage.getItem("token"));
+    this.form.token = JSON.parse(localStorage.getItem('token'));
     this.user = this.form.token[0].fullname;
-  }
+    // login 2 ชม ถ้าเกินให้ออก แล้ว clear localstorage
+    let hours = 2;
+    let saved = localStorage.getItem('saved');
+    if (saved && new Date().getTime() - saved > hours * 60 * 60 * 1000) {
+      localStorage.clear();
+      this.$router.push('/login');
+    }
+  },
 };
 </script>
