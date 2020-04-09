@@ -68,7 +68,7 @@ export default {
             password: this.form.password,
           },
         })
-        .then(response => {
+        .then((response) => {
           this.form.tokens = response.data;
           localStorage.setItem('token', JSON.stringify(this.form.tokens));
           localStorage.setItem('saved', new Date().getTime());

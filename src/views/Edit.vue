@@ -336,7 +336,6 @@
                     @input="selectend()"
                   ></b-datepicker>
                 </b-field>
-                
               </div>
             </div>
             <div class="content ">
@@ -3734,7 +3733,7 @@ export default {
             num: this.id, //num last
           },
         })
-        .then(response => {
+        .then((response) => {
           // JSON responses are automatically parsed.
           this.updateperson = response.data;
           this.startsick = new Date(this.updateperson[0].startsick);
@@ -4222,7 +4221,7 @@ export default {
             total14: this.total14,
           },
         })
-        .then(response => {
+        .then((response) => {
           this.message_res = response.data;
           this.$buefy.notification.open({
             message: this.message_res[0].message,
@@ -4258,7 +4257,7 @@ export default {
             idcard_remove: this.idcard,
           },
         })
-        .then(response => {
+        .then((response) => {
           this.romove_message = response.data;
           this.$buefy.notification.open({
             message: this.romove_message[0].message,

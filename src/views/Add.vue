@@ -3978,7 +3978,7 @@ export default {
               user_create: this.form.token[0].fullname,
             },
           })
-          .then(response => {
+          .then((response) => {
             this.message_res = response.data;
             this.$buefy.notification.open({
               message: this.message_res[0].message,
