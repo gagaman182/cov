@@ -12,7 +12,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@guillaumebriday/vue-scroll-progress-bar": "^0.5.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "buefy": "^0.8.13",
     "core-js": "^3.6.4",
     "dr-vue-echarts": "^1.0.13",
